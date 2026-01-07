@@ -1,0 +1,2798 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    129906,       2790]
+NotebookOptionsPosition[    112363,       2454]
+NotebookOutlinePosition[    113162,       2476]
+CellTagsIndexPosition[    113119,       2473]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Initialization cells", "Chapter",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.77238491914182*^9, 3.772384938969769*^9}, {
+  3.772537870066352*^9, 3.772537870831804*^9}, {3.772540454800994*^9, 
+  3.772540458456403*^9}},ExpressionUUID->"6560ff22-c7f4-4a91-ba29-\
+640cb3faa494"],
+
+Cell[CellGroupData[{
+
+Cell["Package files path", "Section",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.77238491914182*^9, 3.772384938969769*^9}, {
+  3.772537870066352*^9, 3.772537870831804*^9}, {3.772540454800994*^9, 
+  3.772540458456403*^9}, {3.891088988234212*^9, 3.891088991323437*^9}, {
+  3.8910892733371367`*^9, 3.891089279769807*^9}, {3.891089572321388*^9, 
+  3.891089575952317*^9}, {3.891089708086371*^9, 
+  3.8910897115925274`*^9}},ExpressionUUID->"4eac0837-7631-4b98-b37d-\
+697cb611ba02"],
+
+Cell["\<\
+To open or close all sub tabs at the same time first use Ctrl+A to select all \
+cells then use Ctrl+Shift+] to close all or Ctrl+Shift+[ to open all cells. \
+Alternatively double clicking on the rightmost corner of a section opens or \
+closes that cell.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.829136678792416*^9, 3.829136724345496*^9}, {
+  3.891089625686507*^9, 
+  3.8910896553727903`*^9}},ExpressionUUID->"6121c76e-3821-4a3b-b106-\
+b74d87f97dc3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Finds", " ", "the", " ", "folder", " ", "named", " ", "Package", " ", 
+    "files", " ", "and", " ", "adds", " ", "it", " ", "to", " ", 
+    RowBox[{"$Path", ".", " ", "Do"}], " ", "not", " ", "rename", " ", "that",
+     " ", 
+    RowBox[{"folder", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"AppendTo", "[", 
+     RowBox[{"$Path", ",", 
+      RowBox[{"First", "@", 
+       RowBox[{"FileNames", "[", 
+        RowBox[{"\"\<Package files\>\"", ",", 
+         RowBox[{"ParentDirectory", "@", 
+          RowBox[{"NotebookDirectory", "[", "]"}]}]}], "]"}]}]}], "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"<<", "FACTpkgFile`"}]}]}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ InitializationCell->True,
+ CellChangeTimes->{{3.770724474459798*^9, 3.770724529902997*^9}, {
+   3.770987797277863*^9, 3.7709878058837214`*^9}, {3.770987864367957*^9, 
+   3.770987864916751*^9}, {3.7709927905767884`*^9, 3.770992797476592*^9}, {
+   3.770992896073373*^9, 3.770992899869353*^9}, {3.771001268585929*^9, 
+   3.7710012950236197`*^9}, {3.771092755760683*^9, 3.771092762964431*^9}, {
+   3.7710927983398843`*^9, 3.7710928016161146`*^9}, {3.771096009594474*^9, 
+   3.7710960100945654`*^9}, {3.772215834126259*^9, 3.772215843868675*^9}, {
+   3.772414477794369*^9, 3.772414481213222*^9}, {3.7725384296568727`*^9, 
+   3.772538447954479*^9}, 3.7725404270262566`*^9, {3.772889140574798*^9, 
+   3.772889151542438*^9}, {3.773145873273926*^9, 3.7731458931305733`*^9}, 
+   3.773418505234575*^9, 3.785603196147904*^9, 3.830011773791357*^9, 
+   3.8329278124564075`*^9, {3.891088696059198*^9, 3.891088838277723*^9}, {
+   3.8921260773941584`*^9, 3.892126103836466*^9}, {3.933158195515253*^9, 
+   3.933158212951954*^9}, 3.939289791742079*^9, {3.9482834781658554`*^9, 
+   3.948283492878149*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"de03fcd6-b871-496d-a7ab-67f8d6327835"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Notebook cell properties", "Chapter",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.77238491914182*^9, 3.772384938969769*^9}, {
+  3.772537870066352*^9, 3.772537870831804*^9}, {3.772540454800994*^9, 
+  3.772540458456403*^9}, {3.891088988234212*^9, 3.891088991323437*^9}, {
+  3.8910892733371367`*^9, 3.891089279769807*^9}, {3.891089572321388*^9, 
+  3.891089575952317*^9}, {3.891089708086371*^9, 3.8910897115925274`*^9}, {
+  3.891089745467927*^9, 
+  3.8910897494889793`*^9}},ExpressionUUID->"dc0cb5e0-0561-47a1-a65e-\
+0ec0dbe5438d"],
+
+Cell[CellGroupData[{
+
+Cell["Editing cell properties", "Subsection",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.772886678242123*^9, 3.772886691536046*^9}, {
+   3.7728868395831523`*^9, 3.772886839692607*^9}, 
+   3.948372647498104*^9},ExpressionUUID->"979fe95e-392b-401a-ad63-\
+6182fc073d55"],
+
+Cell["\<\
+Write \[OpenCurlyDoubleQuote]True\[CloseCurlyDoubleQuote] in editpf and \
+evaluate the cells in this subsection to enable cell editing in this notebook \
+otherwise write \[OpenCurlyDoubleQuote]False\[CloseCurlyDoubleQuote]. Write \
+\[OpenCurlyDoubleQuote]True\[CloseCurlyDoubleQuote] in deletepf and evaluate \
+the cells of this subsection to enable cell deleting in this notebook \
+otherwise write \[OpenCurlyDoubleQuote]False\[CloseCurlyDoubleQuote].\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.829136678792416*^9, 3.829136724345496*^9}, {
+  3.891089625686507*^9, 3.8910896553727903`*^9}, {3.891091737168961*^9, 
+  3.8910918918753457`*^9}, {3.891091984171587*^9, 3.891092013702079*^9}, {
+  3.891092044462976*^9, 3.891092075086072*^9}, {3.891092128292735*^9, 
+  3.8910921635774*^9}, {3.948372536939909*^9, 
+  3.948372569356695*^9}},ExpressionUUID->"e1086a9c-cf4f-4b93-bd00-\
+2a12fb1b3b3b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"editpf", "=", "\"\<False\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"deletepf", "=", "\"\<False\>\""}], ";"}]}], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.891090164989647*^9, 3.891090182269524*^9}, {
+  3.8910903944776545`*^9, 3.891090395421489*^9}, {3.891090904303694*^9, 
+  3.8910909072233562`*^9}, {3.8913565070319824`*^9, 3.891356507531885*^9}, {
+  3.894033298595342*^9, 3.894033303073445*^9}, {3.896539267632372*^9, 
+  3.89653926887862*^9}, {3.896539298930292*^9, 3.8965393001205263`*^9}, {
+  3.917966400628339*^9, 3.9179664068269825`*^9}, {3.917966459083278*^9, 
+  3.917966463859298*^9}, {3.947860900143186*^9, 3.9478609035709953`*^9}, {
+  3.94837250877404*^9, 3.9483725144122562`*^9}, {3.966607316324283*^9, 
+  3.9666073217943974`*^9}, {3.968324054745203*^9, 3.968324060685278*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"1e07b56f-f136-47c4-9553-e87e17a30aad"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"multnb", "=", 
+   RowBox[{"EvaluationNotebook", "[", "]"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.772538577538379*^9, 3.7725386199839873`*^9}, {
+  3.772561259726162*^9, 3.772561268849103*^9}, {3.772561320736054*^9, 
+  3.772561325953581*^9}, {3.830432408422649*^9, 3.830432416905243*^9}, {
+  3.8910901180530777`*^9, 3.891090122529446*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"a7d911b3-eee9-4b2a-b2b8-948bba775620"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"titlecells", "=", 
+     RowBox[{"NotebookFind", "[", 
+      RowBox[{
+      "multnb", ",", "\"\<Title\>\"", ",", "All", ",", "CellStyle", ",", 
+       RowBox[{"AutoScroll", "\[Rule]", "False"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"titlecells", ",", 
+      RowBox[{"Evaluatable", "\[Rule]", "False"}], ",", 
+      RowBox[{"Editable", "\[Rule]", "True"}], ",", 
+      RowBox[{"Deletable", "\[Rule]", "deletepf"}]}], "]"}], ";"}]}], 
+  "*)"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.8910902656293154`*^9, 3.891090266622034*^9}, {
+  3.891090384094948*^9, 3.891090407429324*^9}, {3.891090914562275*^9, 
+  3.891090936993514*^9}, {3.896539271353605*^9, 3.89653927284147*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"80292a23-779a-f84b-a39d-717d8d291723"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"chaptercells", "=", 
+   RowBox[{"NotebookFind", "[", 
+    RowBox[{
+    "multnb", ",", "\"\<Chapter\>\"", ",", "All", ",", "CellStyle", ",", 
+     RowBox[{"AutoScroll", "\[Rule]", "False"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"chaptercells", ",", 
+    RowBox[{"Evaluatable", "\[Rule]", "False"}], ",", 
+    RowBox[{"Editable", "\[Rule]", "editpf"}], ",", 
+    RowBox[{"Deletable", "\[Rule]", "deletepf"}]}], "]"}], ";"}]}], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.89109042462824*^9, 3.8910904405047717`*^9}, {
+  3.891090916757201*^9, 3.8910909396525908`*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"d3bf5f95-66b2-4f95-906b-ce0e209a9d3a"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"inputcells", "=", 
+   RowBox[{"NotebookFind", "[", 
+    RowBox[{"multnb", ",", "\"\<Input\>\"", ",", "All", ",", "CellStyle", ",", 
+     RowBox[{"AutoScroll", "\[Rule]", "False"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"inputcells", ",", 
+    RowBox[{"Evaluatable", "\[Rule]", "True"}], ",", 
+    RowBox[{"Editable", "\[Rule]", "True"}], ",", 
+    RowBox[{"Deletable", "\[Rule]", "False"}]}], "]"}], ";"}]}], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.771338808327732*^9, 3.771338838774293*^9}, {
+   3.771338872744232*^9, 3.771338901557121*^9}, {3.771339034391318*^9, 
+   3.771339063783631*^9}, {3.771339096151359*^9, 3.77133911357322*^9}, {
+   3.7713391442197604`*^9, 3.771339195676179*^9}, 3.771339390495008*^9, {
+   3.771339575119819*^9, 3.77133960170828*^9}, {3.771339739830652*^9, 
+   3.771339753379721*^9}, {3.771339783839568*^9, 3.771339793445896*^9}, {
+   3.771339833663968*^9, 3.771339946755887*^9}, {3.771340040454396*^9, 
+   3.7713400465261693`*^9}, {3.771340259874557*^9, 3.771340271029802*^9}, {
+   3.7713410257249985`*^9, 3.771341027165447*^9}, {3.771606733315581*^9, 
+   3.771606787720738*^9}, {3.771606856897359*^9, 3.771606858779351*^9}, {
+   3.7716072150920186`*^9, 3.771607308401827*^9}, {3.771947641014653*^9, 
+   3.771947658952503*^9}, {3.771947728649555*^9, 3.771947738700951*^9}, {
+   3.771954299562523*^9, 3.77195430125387*^9}, {3.771954364975469*^9, 
+   3.771954381379567*^9}, {3.771954527937702*^9, 3.771954530200677*^9}, {
+   3.77195470540431*^9, 3.7719547066070895`*^9}, {3.77195489796051*^9, 
+   3.771954915845731*^9}, {3.771955207646293*^9, 3.771955213175476*^9}, {
+   3.7719553031320677`*^9, 3.77195541435301*^9}, {3.771955485493906*^9, 
+   3.771955507270805*^9}, {3.771955615850394*^9, 3.771955652370714*^9}, {
+   3.77195568965801*^9, 3.7719556917224617`*^9}, {3.772538628388029*^9, 
+   3.77253862871608*^9}, {3.7725387108370686`*^9, 3.772538722818409*^9}, 
+   3.772540335851931*^9, {3.891090205311295*^9, 3.8910902285047684`*^9}, {
+   3.894033277753723*^9, 3.894033282614657*^9}, {3.9478621483392277`*^9, 
+   3.9478621504093475`*^9}, {3.948372585296067*^9, 3.948372591475584*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"bbfa2081-a5a0-4abc-87e8-a9da942e85a4"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"sectioncells", "=", 
+   RowBox[{"NotebookFind", "[", 
+    RowBox[{
+    "multnb", ",", "\"\<Section\>\"", ",", "All", ",", "CellStyle", ",", 
+     RowBox[{"AutoScroll", "\[Rule]", "False"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"sectioncells", ",", 
+    RowBox[{"Evaluatable", "\[Rule]", "False"}], ",", 
+    RowBox[{"Editable", "\[Rule]", "editpf"}], ",", 
+    RowBox[{"Deletable", "\[Rule]", "deletepf"}]}], "]"}], ";"}]}], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.77195551243602*^9, 3.771955518776033*^9}, 
+   3.771955628221305*^9, 3.7719556973643703`*^9, {3.772538632356098*^9, 
+   3.772538632684143*^9}, {3.772538725708537*^9, 3.772538731660059*^9}, {
+   3.8910909216294627`*^9, 3.8910909427142878`*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"c4abfedf-58bb-4f4e-90fe-540e1c96c9c4"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"subsectioncells", "=", 
+   RowBox[{"NotebookFind", "[", 
+    RowBox[{
+    "multnb", ",", "\"\<Subsection\>\"", ",", "All", ",", "CellStyle", ",", 
+     RowBox[{"AutoScroll", "\[Rule]", "False"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"subsectioncells", ",", 
+    RowBox[{"Evaluatable", "\[Rule]", "False"}], ",", 
+    RowBox[{"Editable", "\[Rule]", "editpf"}], ",", 
+    RowBox[{"Deletable", "\[Rule]", "deletepf"}]}], "]"}], ";"}]}], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.771955395965189*^9, 3.771955399206523*^9}, {
+   3.771955522226803*^9, 3.771955528625688*^9}, 3.771955632052058*^9, 
+   3.771955700198789*^9, {3.772538634372338*^9, 3.772538634641591*^9}, {
+   3.7725387345536785`*^9, 3.77253873822447*^9}, {3.772538795105706*^9, 
+   3.772538801026188*^9}, {3.891090925484731*^9, 3.891090944909641*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"d7a60119-7683-4776-bfe0-95edf7cb4710"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"codetextcells", "=", 
+   RowBox[{"NotebookFind", "[", 
+    RowBox[{
+    "multnb", ",", "\"\<CodeText\>\"", ",", "All", ",", "CellStyle", ",", 
+     RowBox[{"AutoScroll", "\[Rule]", "False"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"codetextcells", ",", 
+    RowBox[{"Evaluatable", "\[Rule]", "False"}], ",", 
+    RowBox[{"Editable", "\[Rule]", "editpf"}], ",", 
+    RowBox[{"Deletable", "\[Rule]", "deletepf"}]}], "]"}], ";"}]}], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.8910904962749925`*^9, 3.891090510417102*^9}, {
+  3.891090928681288*^9, 3.891090947940693*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"10968b4b-72c4-45bb-a3b2-7b27f1200796"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["History length", "Subsection",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.772886678242123*^9, 3.772886704067807*^9}, 
+   3.948372650702435*^9},ExpressionUUID->"2d366563-be9f-4a76-937b-\
+02af69147d55"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"$HistoryLength", "=", "0"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.771339235100431*^9, 3.771339241380398*^9}, 
+   3.77133960432326*^9, 3.771947740365743*^9, {3.83034862192086*^9, 
+   3.830348622018442*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"099947f2-56a2-4b8f-a86c-70298459f5a3"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Input cells", "Chapter",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.77238491914182*^9, 3.772384938969769*^9}, {
+  3.772537870066352*^9, 3.772537870831804*^9}, {3.772540454800994*^9, 
+  3.772540458456403*^9}, {3.891089517932328*^9, 
+  3.8910895187257533`*^9}},ExpressionUUID->"349a0422-87d8-4669-af67-\
+e3b5c113851c"],
+
+Cell[CellGroupData[{
+
+Cell["Importing and trimming original images", "Section",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.77238491914182*^9, 3.772384938969769*^9}, {
+  3.772537870066352*^9, 3.772537870831804*^9}, {3.772540454800994*^9, 
+  3.772540458456403*^9}, {3.891088988234212*^9, 3.891088991323437*^9}, {
+  3.8910892733371367`*^9, 3.891089279769807*^9}, {3.892032920618046*^9, 
+  3.892032923044592*^9}},ExpressionUUID->"118a075b-95b5-4ff4-9f02-\
+43831627d5fc"],
+
+Cell[CellGroupData[{
+
+Cell["Data import", "Subsection",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891096538433184*^9, 3.89109654180459*^9}, 
+   3.9096694551762733`*^9, {3.911046016610118*^9, 
+   3.91104601883628*^9}},ExpressionUUID->"5fb1ee3e-4b8b-7c42-a865-\
+091233898fe7"],
+
+Cell["\<\
+Write the name of the corresponding data file as a string. If the Original \
+images folder contains more than one image, add an underscore followed by an \
+image sequence number to import the images in a particular order. For example \
+if there are two images in the Original images folder and their image names \
+are imgA.tiff and imgB.tiff change them to imgA_1.tiff and imgB_2.tiff if you \
+would like to import them in that order.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891096556058117*^9, 3.891096595886291*^9}, {
+   3.892898779775897*^9, 3.8928988581972075`*^9}, {3.892898892612658*^9, 
+   3.892898953649408*^9}, {3.892898986300358*^9, 3.892899305262262*^9}, {
+   3.892899341502062*^9, 3.8928993630723534`*^9}, {3.90966946898428*^9, 
+   3.909669491103052*^9}, {3.9110452403469677`*^9, 3.911045242659207*^9}, 
+   3.916150406809319*^9, {3.916150686444812*^9, 3.916150688690959*^9}, {
+   3.928332842737018*^9, 3.9283328704131413`*^9}, {3.947862227871258*^9, 
+   3.947862244123064*^9}, {3.947945251521698*^9, 3.9479453377273617`*^9}, {
+   3.96599519415506*^9, 
+   3.965995237453079*^9}},ExpressionUUID->"63c24fe3-7a55-6c48-b58a-\
+0557b5a7980a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"datafn", "=", "\"\<MyNewSEMimages\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.92833260567803*^9, 3.928332641268519*^9}, 
+   3.9478621675206547`*^9, {3.948536726867275*^9, 3.948536728669048*^9}, {
+   3.951820295831365*^9, 3.951820303452248*^9}, 3.964538734302611*^9, {
+   3.9651373699457912`*^9, 3.96513738090798*^9}, 3.9683240757625093`*^9, {
+   3.97454360366049*^9, 3.974543608924846*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"58d7d9cc-f47e-104f-a521-0fd6cde04fa3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Image trimming parameters", "Subsection",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891096538433184*^9, 3.89109654180459*^9}, {
+  3.891096625335166*^9, 3.891096627009779*^9}, {3.8910971766179266`*^9, 
+  3.8910971783337593`*^9}, {3.891097519928216*^9, 
+  3.89109752281351*^9}},ExpressionUUID->"e8db1fe9-2ca7-4a86-83fc-\
+fc29553764ec"],
+
+Cell["\<\
+Trim and discard the parts of the images that you are not interested in \
+analyzing such as scale bar borders. Write \[OpenCurlyDoubleQuote]yes\
+\[CloseCurlyDoubleQuote] if you wish to trim the imported original images. \
+Write \[OpenCurlyDoubleQuote]no\[CloseCurlyDoubleQuote] if no trimming is \
+necessary. Make sure these trimmed images perfectly correspond with the \
+binary images imported in the segmenting images section.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891096556058117*^9, 3.891096595886291*^9}, {
+   3.891096647514055*^9, 3.891096690357179*^9}, {3.891097201718037*^9, 
+   3.891097202119836*^9}, {3.891097537718125*^9, 3.89109759763441*^9}, {
+   3.891343024385347*^9, 3.891343045118731*^9}, {3.891344826585946*^9, 
+   3.89134489378421*^9}, 3.89134496307263*^9, {3.948369924419481*^9, 
+   3.948369966180195*^9}, {3.948369999978023*^9, 3.948370064712887*^9}, {
+   3.948370110025324*^9, 
+   3.948370118531054*^9}},ExpressionUUID->"2616ec1f-7dda-4771-8ec2-\
+606f49e215fb"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"usetrim", "=", "\"\<yes\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.891096630473613*^9, 3.891096636053438*^9}, {
+   3.891097184281948*^9, 3.891097186551593*^9}, 3.891097496207*^9, {
+   3.8913449986744924`*^9, 3.891345005476408*^9}, {3.8940333339159837`*^9, 
+   3.894033334653653*^9}, {3.933158331018244*^9, 3.933158332292057*^9}, {
+   3.9331584212755566`*^9, 3.933158422231718*^9}, {3.948536732296892*^9, 
+   3.94853673327837*^9}, {3.9745436136374226`*^9, 3.974543614434108*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"79553676-6fcb-4c24-86c7-bfc89f25493f"],
+
+Cell["\<\
+If usetrim = yes, input a list containing the dimensions to use for the \
+ImageTrim function. The length of this list needs to be the same length as \
+the list of originalimgs. The format for the image trimming function is \
+{{xmin,ymin}, {xmax,ymax}}. If usetrim= no, input an empty list {}. To obtain \
+the correct trimming dimensions start by right clicking one of the original \
+images (assuming all images have the same dimensions) and selecting get \
+coordinates. Then, hover over the image and find the minimum {x,y} and \
+maximum {x,y} coordinates necessary to trim the SEM information. This same \
+technique can be used to find the ROI coordinates of the scale bar.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891096556058117*^9, 3.891096595886291*^9}, {
+   3.891096647514055*^9, 3.891096690357179*^9}, {3.891097201718037*^9, 
+   3.891097202119836*^9}, {3.891097537718125*^9, 3.89109759763441*^9}, {
+   3.891343024385347*^9, 3.891343045118731*^9}, {3.891344826585946*^9, 
+   3.89134489378421*^9}, 3.89134496307263*^9, {3.948369924419481*^9, 
+   3.948369966180195*^9}, {3.948369999978023*^9, 3.948370064712887*^9}, {
+   3.948370110025324*^9, 3.948370118531054*^9}, 
+   3.966612676250904*^9},ExpressionUUID->"e3d40188-cbc0-1745-bb25-\
+70af8e12a88c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"trimdims", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "76"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1920", ",", "1275"}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "76"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1920", ",", "1275"}], "}"}]}], "}"}]}], "}"}]}], 
+  ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.8910973090377264`*^9, 3.8910973178848987`*^9}, {
+   3.8913447890608187`*^9, 3.891344789535142*^9}, {3.891426803794348*^9, 
+   3.89142680388996*^9}, {3.891426959834719*^9, 3.8914269598889637`*^9}, {
+   3.891427070303704*^9, 3.891427070480414*^9}, {3.8914271627635098`*^9, 
+   3.891427162824546*^9}, 3.933158250424116*^9, 3.933158816623169*^9, 
+   3.939987232874885*^9, {3.948194821053192*^9, 3.948194847339642*^9}, 
+   3.9482859989986744`*^9, {3.948293897469322*^9, 3.948293905337658*^9}, {
+   3.9485367399527416`*^9, 3.948536741324114*^9}, {3.974543649982542*^9, 
+   3.974543683539186*^9}, {3.9745438100150585`*^9, 3.97454381226453*^9}, {
+   3.974544442554312*^9, 3.974544445069345*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"131ba927-4ef8-4169-b236-217990694fe4"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Pixel size determination", "Section",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891096538433184*^9, 3.89109654180459*^9}, {
+   3.891097395305043*^9, 3.891097395877677*^9}, {3.8910974850903473`*^9, 
+   3.891097486253567*^9}, {3.891342431468978*^9, 3.891342437115471*^9}, {
+   3.891342492628126*^9, 3.891342506723246*^9}, 3.8925678535076504`*^9, {
+   3.947867092272898*^9, 
+   3.947867092846335*^9}},ExpressionUUID->"ceecc5b5-ccd1-4e69-a82b-\
+2f1df8fd3d4a"],
+
+Cell[BoxData[Cell["\<\
+Write \[OpenCurlyDoubleQuote]yes\[CloseCurlyDoubleQuote] if  the imported \
+images have a sclebar and you want to use this program to determine the pixel \
+size (unit length/pixel). Write \[OpenCurlyDoubleQuote]no\
+\[CloseCurlyDoubleQuote] if you wish to keep the analysis units in pixels. \
+Write \[OpenCurlyDoubleQuote]import\[CloseCurlyDoubleQuote] if you instead \
+want to import from a file of previously obtained pixel sizes.\
+\>", "CodeText",
+  CellChangeTimes->{{3.891096556058117*^9, 3.891096595886291*^9}, {
+   3.891096647514055*^9, 3.891096690357179*^9}, {3.891097201718037*^9, 
+   3.891097202119836*^9}, {3.891097537718125*^9, 3.89109759763441*^9}},
+  ExpressionUUID->"a4c18704-7c3e-4379-81f8-35a218ad62cb"]], "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.8913428989347334`*^9, 3.891342996945647*^9}, {
+   3.89134307211377*^9, 3.89134308483177*^9}, {3.89134311867951*^9, 
+   3.891343281987225*^9}, {3.8913433713854976`*^9, 3.891343372044241*^9}, 
+   3.891345499868493*^9, {3.892567894752718*^9, 3.892567894752718*^9}, {
+   3.947864428049359*^9, 3.947864429323091*^9}, {3.974546745588293*^9, 
+   3.974546745900719*^9}},ExpressionUUID->"e9e77444-75e6-4b8d-badf-\
+a95ac697192b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"useautomaticps", "=", "\"\<yes\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{
+  3.8913433757447324`*^9, {3.891345166117244*^9, 3.891345167140458*^9}, {
+   3.891352303494956*^9, 3.891352304666167*^9}, {3.891352813904686*^9, 
+   3.891352820678089*^9}, {3.891353415842187*^9, 3.891353417075924*^9}, {
+   3.891962183189376*^9, 3.891962183319773*^9}, {3.891962714834631*^9, 
+   3.8919627173694115`*^9}, {3.892896992479783*^9, 3.892896994160958*^9}, {
+   3.8951334460664206`*^9, 3.895133446847395*^9}, {3.9331582630926075`*^9, 
+   3.933158263239879*^9}, {3.933322667704626*^9, 3.9333226701806393`*^9}, {
+   3.947864445771012*^9, 3.947864445989805*^9}, {3.94837261223542*^9, 
+   3.948372612973852*^9}, {3.948537504750326*^9, 3.94853750642181*^9}, {
+   3.965137392353413*^9, 3.965137392415964*^9}, {3.974546835008802*^9, 
+   3.974546836034441*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"6b81cb5b-58f2-4ced-8eba-e7cf257c0230"],
+
+Cell[BoxData[Cell["\<\
+If useautomaticps = \[OpenCurlyDoubleQuote]yes\[CloseCurlyDoubleQuote] input \
+a list of dimensions to use for the ImageTrim function . Make sure that the \
+scale bar region of interest shows mostly the scale bar. The length of this \
+list needs to be the same length as the list of originalimgs . The format for \
+the image trimming function is {{xmin, ymin}, {xmax, ymax}} . If \
+useautomaticps = \[OpenCurlyDoubleQuote]no\[CloseCurlyDoubleQuote], input an \
+empty list {} .\
+\>", "CodeText",
+  CellChangeTimes->{{3.891096556058117*^9, 3.891096595886291*^9}, {
+   3.891096647514055*^9, 3.891096690357179*^9}, {3.891097201718037*^9, 
+   3.891097202119836*^9}, {3.891097537718125*^9, 3.89109759763441*^9}},
+  ExpressionUUID->"45450c82-6c8b-4d80-88dc-3b3b509d16dd"]], "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.8913428989347334`*^9, 3.891342996945647*^9}, {
+   3.89134307211377*^9, 3.89134308483177*^9}, {3.89134311867951*^9, 
+   3.891343281987225*^9}, {3.8913433713854976`*^9, 3.891343372044241*^9}, {
+   3.891344024500095*^9, 3.891344058729495*^9}, 3.891345510206916*^9, {
+   3.892132095584587*^9, 3.892132095585586*^9}, {3.892567921974335*^9, 
+   3.89256792854589*^9}},ExpressionUUID->"b7d54fbe-994f-4db0-8554-\
+3ba278ab91e4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"scalebarroi", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"9", ",", "30"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"402", ",", "66"}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"9", ",", "30"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"402", ",", "66"}], "}"}]}], "}"}]}], "}"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.8913425114936*^9, 3.891342539133204*^9}, {
+   3.891342678214834*^9, 3.891342680212179*^9}, {3.891429334573726*^9, 
+   3.8914293496524506`*^9}, {3.895761160601588*^9, 3.895761165990962*^9}, {
+   3.89576127938791*^9, 3.8957612837644978`*^9}, {3.8957613295864754`*^9, 
+   3.8957615073387227`*^9}, {3.9331582736049747`*^9, 3.9331582889985237`*^9}, 
+   3.933158888902558*^9, 3.9399872919311447`*^9, {3.947864548533312*^9, 
+   3.9478645632717113`*^9}, {3.947864613784679*^9, 3.947864661837569*^9}, {
+   3.947864693166389*^9, 3.947864712678475*^9}, {3.948195148208863*^9, 
+   3.948195166746435*^9}, {3.948286053251621*^9, 3.9482860683931694`*^9}, {
+   3.94829388821793*^9, 3.948293892082457*^9}, {3.948537510767084*^9, 
+   3.948537510813949*^9}, {3.9745468613566*^9, 3.974546883284262*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"2de678d0-fd93-4f74-bec6-e54a9ef8559d"],
+
+Cell[BoxData[Cell["\<\
+If useautomaticps = \[OpenCurlyDoubleQuote]yes\[CloseCurlyDoubleQuote] input \
+a gray value threshold and minimum component length (in pixels) used to \
+select the scale bar in scalebarmeas. The format is {threshold value, minimum \
+length value, color negate}. The threshold value is a number between 0 and 1. \
+If the scale bar is black with a white background input \
+\[OpenCurlyDoubleQuote]yes\[CloseCurlyDoubleQuote] in the third slot. \
+\>", "CodeText",
+  CellChangeTimes->{{3.891096556058117*^9, 3.891096595886291*^9}, {
+   3.891096647514055*^9, 3.891096690357179*^9}, {3.891097201718037*^9, 
+   3.891097202119836*^9}, {3.891097537718125*^9, 3.89109759763441*^9}},
+  ExpressionUUID->"0fb7c012-18bf-4d18-84fc-4d5d673d9e1e"]], "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.8913428989347334`*^9, 3.891342996945647*^9}, {
+   3.89134307211377*^9, 3.89134308483177*^9}, {3.89134311867951*^9, 
+   3.891343281987225*^9}, {3.8913433713854976`*^9, 3.891343372044241*^9}, {
+   3.891344024500095*^9, 3.891344058729495*^9}, 3.891345510206916*^9, {
+   3.892132095584587*^9, 3.892132095585586*^9}, {3.892567921974335*^9, 
+   3.89256792854589*^9}, {3.895742159398773*^9, 3.895742229603926*^9}, {
+   3.89574229334343*^9, 3.895742361447838*^9}, {3.895742721060668*^9, 
+   3.895742794255714*^9}, 
+   3.917966423484158*^9},ExpressionUUID->"126b23bf-a7fa-47e8-9812-\
+6c304ae989d4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"sbthreshold", ",", "minlength", ",", "colnegate"}], "}"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"0.5", ",", "100", ",", "\"\<no\>\""}], "}"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.895742002654468*^9, 3.895742033676044*^9}, {
+  3.895742235468472*^9, 3.895742273351329*^9}, {3.895742405437765*^9, 
+  3.895742405672093*^9}, {3.8957426073333187`*^9, 3.895742628437953*^9}, {
+  3.895760782640178*^9, 3.89576078302855*^9}, {3.895760837519757*^9, 
+  3.895760838180293*^9}, {3.917966430368064*^9, 3.917966432894088*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"70a348d9-350d-4816-9128-d2e935b9960e"],
+
+Cell[BoxData[Cell["\<\
+If the scale bar is continuous input its associated label presented in \
+scalebarhighlight. If the scale bar has multiple segments input the labels of \
+the first and last segment presented in scalebarhighlight. The format for \
+this variable is {label 1} or {label 1, label 2}.\
+\>", "CodeText",
+  CellChangeTimes->{{3.891096556058117*^9, 3.891096595886291*^9}, {
+   3.891096647514055*^9, 3.891096690357179*^9}, {3.891097201718037*^9, 
+   3.891097202119836*^9}, {3.891097537718125*^9, 3.89109759763441*^9}},
+  ExpressionUUID->"cb292899-1ee8-41d1-b8df-113c932ca26c"]], "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.8913428989347334`*^9, 3.891342996945647*^9}, {
+   3.89134307211377*^9, 3.89134308483177*^9}, {3.89134311867951*^9, 
+   3.891343281987225*^9}, {3.8913433713854976`*^9, 3.891343372044241*^9}, {
+   3.891344024500095*^9, 3.891344058729495*^9}, 3.891345510206916*^9, {
+   3.892132095584587*^9, 3.892132095585586*^9}, {3.892567921974335*^9, 
+   3.89256792854589*^9}, {3.895742159398773*^9, 3.895742229603926*^9}, {
+   3.89574229334343*^9, 3.895742361447838*^9}, {3.895742721060668*^9, 
+   3.895742794255714*^9}, {3.895757692934469*^9, 3.895757692934469*^9}, {
+   3.8957577524498453`*^9, 3.895757837571718*^9}, {3.895758146620422*^9, 
+   3.895758198414127*^9}, {3.8957582660078545`*^9, 3.895758327212428*^9}, {
+   3.895758397882283*^9, 3.89575845661681*^9}, {3.933158431283882*^9, 
+   3.933158431283882*^9}},ExpressionUUID->"55f252da-f311-4396-9316-\
+e99fc2619ac2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"scalebarlabel", "=", 
+   RowBox[{"{", "1", "}"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.895742002654468*^9, 3.895742033676044*^9}, {
+   3.895742235468472*^9, 3.895742273351329*^9}, {3.895742405437765*^9, 
+   3.895742405672093*^9}, {3.8957426073333187`*^9, 3.895742628437953*^9}, 
+   3.895757679147743*^9, {3.895757713914806*^9, 3.895757743027967*^9}, {
+   3.895760699941922*^9, 3.895760700375855*^9}},
+ CellLabel->"In[26]:=",ExpressionUUID->"7c1149c6-5199-46bb-9b52-9b31a021d026"],
+
+Cell[BoxData[Cell["Input region of interest showing scale bar magnitude", 
+  "CodeText",
+  CellChangeTimes->{{3.891096556058117*^9, 3.891096595886291*^9}, {
+   3.891096647514055*^9, 3.891096690357179*^9}, {3.891097201718037*^9, 
+   3.891097202119836*^9}, {3.891097537718125*^9, 3.89109759763441*^9}},
+  ExpressionUUID->"9fb56f57-f58a-784a-ba2f-af473705ba8b"]], "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.8913428989347334`*^9, 3.891342996945647*^9}, {
+   3.89134307211377*^9, 3.89134308483177*^9}, {3.89134311867951*^9, 
+   3.891343281987225*^9}, {3.8913433713854976`*^9, 3.891343372044241*^9}, {
+   3.891344024500095*^9, 3.891344058729495*^9}, 3.891345510206916*^9, {
+   3.892132095584587*^9, 3.892132095585586*^9}, {3.892567921974335*^9, 
+   3.89256792854589*^9}, {3.895742159398773*^9, 3.895742229603926*^9}, {
+   3.89574229334343*^9, 3.895742361447838*^9}, {3.895742721060668*^9, 
+   3.895742794255714*^9}, {3.895757692934469*^9, 3.895757692934469*^9}, {
+   3.8957577524498453`*^9, 3.895757837571718*^9}, {3.895758146620422*^9, 
+   3.895758198414127*^9}, {3.8957582660078545`*^9, 3.895758327212428*^9}, {
+   3.895758397882283*^9, 3.89575845661681*^9}, {3.933158431283882*^9, 
+   3.933158431283882*^9}, {3.947865140565254*^9, 
+   3.9478651522352867`*^9}},ExpressionUUID->"190edb1e-272b-f941-8439-\
+b326b13ba14d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sbmagroi", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"155", ",", "7"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"248", ",", "33"}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"155", ",", "7"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"248", ",", "33"}], "}"}]}], "}"}]}], "}"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.9478652173587303`*^9, 3.947865222851145*^9}, {
+   3.947865256903244*^9, 3.9478652728360844`*^9}, {3.9478653176816254`*^9, 
+   3.947865327113943*^9}, 3.948195223943674*^9, {3.948195256818106*^9, 
+   3.94819527306736*^9}, 3.948286096444198*^9, {3.948293880066721*^9, 
+   3.948293883364567*^9}, {3.9485375194401493`*^9, 3.948537519487011*^9}, {
+   3.9745469840195637`*^9, 3.974547016812378*^9}, {3.974547052176531*^9, 
+   3.974547052514759*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"f5c4c744-5f40-a74a-aeaa-70dc271db87e"],
+
+Cell[BoxData[Cell["\<\
+Input a list with the scale bar magnitude of each image. The order and length \
+of this list must match the order of the imported images.\
+\>", "CodeText",
+  CellChangeTimes->{{3.891096556058117*^9, 3.891096595886291*^9}, {
+   3.891096647514055*^9, 3.891096690357179*^9}, {3.891097201718037*^9, 
+   3.891097202119836*^9}, {3.891097537718125*^9, 3.89109759763441*^9}},
+  ExpressionUUID->"8778db16-e5e0-4fab-a2e8-568b448bae5b"]], "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.8913428989347334`*^9, 3.891342996945647*^9}, {
+   3.89134307211377*^9, 3.89134308483177*^9}, {3.89134311867951*^9, 
+   3.891343281987225*^9}, {3.8913433713854976`*^9, 3.891343372044241*^9}, {
+   3.891344024500095*^9, 3.891344058729495*^9}, 3.891345510206916*^9, {
+   3.892132095584587*^9, 3.892132095585586*^9}, {3.892567921974335*^9, 
+   3.89256792854589*^9}, {3.895742159398773*^9, 3.895742229603926*^9}, {
+   3.89574229334343*^9, 3.895742361447838*^9}, {3.895742721060668*^9, 
+   3.895742794255714*^9}, {3.89574398309179*^9, 3.895744000491564*^9}, {
+   3.8957492644789944`*^9, 3.895749264785079*^9}, {3.895764014558264*^9, 
+   3.895764037964922*^9}, {3.8957644562692165`*^9, 3.8957644889860106`*^9}, {
+   3.895764677008136*^9, 3.8957647241096535`*^9}, {3.947864840293066*^9, 
+   3.947864841409695*^9}},ExpressionUUID->"4992f9d9-5044-4022-992f-\
+6d923d44372d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"scalebarmag", "=", 
+   RowBox[{"{", 
+    RowBox[{"30", ",", "30"}], "}"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.895742002654468*^9, 3.895742033676044*^9}, {
+   3.895742235468472*^9, 3.895742273351329*^9}, {3.895742405437765*^9, 
+   3.895742405672093*^9}, {3.8957426073333187`*^9, 3.895742628437953*^9}, {
+   3.895744013550743*^9, 3.895744031283941*^9}, 3.8957448608152943`*^9, 
+   3.8957608911069145`*^9, {3.895761621706808*^9, 3.895761622410746*^9}, {
+   3.895761712744871*^9, 3.895761712871134*^9}, {3.895761752811419*^9, 
+   3.895761772389128*^9}, {3.8957645239711514`*^9, 3.895764532908658*^9}, {
+   3.895764578467489*^9, 3.895764650789503*^9}, 3.933158309462963*^9, {
+   3.933159002550972*^9, 3.9331590456546288`*^9}, {3.933159124328605*^9, 
+   3.933159222702286*^9}, {3.939987324314165*^9, 3.939987324904291*^9}, {
+   3.939996964727743*^9, 3.939996974679186*^9}, {3.9481952534930553`*^9, 
+   3.948195314308422*^9}, {3.948286112574861*^9, 3.9482861141478233`*^9}, {
+   3.948293871945095*^9, 3.948293875793753*^9}, 3.948369229210991*^9, 
+   3.948537523376734*^9, {3.974547025666214*^9, 3.9745470263664265`*^9}},
+ CellLabel->"In[28]:=",ExpressionUUID->"0a00244a-5888-4061-a960-4fa3510e5bd1"],
+
+Cell[BoxData[Cell["Input the unit of the scale bar magnitude as a string.", 
+  "CodeText",
+  CellChangeTimes->{{3.891096556058117*^9, 3.891096595886291*^9}, {
+   3.891096647514055*^9, 3.891096690357179*^9}, {3.891097201718037*^9, 
+   3.891097202119836*^9}, {3.891097537718125*^9, 3.89109759763441*^9}},
+  ExpressionUUID->"51ddeede-c83e-44d7-80ef-b4c8112fa812"]], "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.8913428989347334`*^9, 3.891342996945647*^9}, {
+   3.89134307211377*^9, 3.89134308483177*^9}, {3.89134311867951*^9, 
+   3.891343281987225*^9}, {3.8913433713854976`*^9, 3.891343372044241*^9}, {
+   3.891344024500095*^9, 3.891344058729495*^9}, 3.891345510206916*^9, {
+   3.892132095584587*^9, 3.892132095585586*^9}, {3.892567921974335*^9, 
+   3.89256792854589*^9}, {3.895742159398773*^9, 3.895742229603926*^9}, {
+   3.89574229334343*^9, 3.895742361447838*^9}, {3.895742721060668*^9, 
+   3.895742794255714*^9}, {3.89574398309179*^9, 3.895744000491564*^9}, {
+   3.8957492644789944`*^9, 3.895749264785079*^9}, {3.895764014558264*^9, 
+   3.895764037964922*^9}, {3.8957644562692165`*^9, 3.8957644889860106`*^9}, {
+   3.895764677008136*^9, 3.895764751197162*^9}, {3.895764793854247*^9, 
+   3.8957648118778505`*^9}, {3.947864857288885*^9, 
+   3.947864858535555*^9}},ExpressionUUID->"b007de6f-550c-4c5e-a636-\
+23213902fc62"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"scalebarunit", "=", "\"\<um\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.895764652816267*^9, 3.895764667021577*^9}, {
+  3.965137397082186*^9, 3.965137398277212*^9}, {3.974547028759083*^9, 
+  3.974547029733343*^9}},
+ CellLabel->"In[29]:=",ExpressionUUID->"4002b352-11b2-4bec-a8a1-9c2ec78cfdfe"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Segmenting images", "Section",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.77238491914182*^9, 3.772384938969769*^9}, {
+  3.772537870066352*^9, 3.772537870831804*^9}, {3.772540454800994*^9, 
+  3.772540458456403*^9}, {3.891088988234212*^9, 3.891088991323437*^9}, {
+  3.8910892733371367`*^9, 3.891089279769807*^9}, {3.891358748791428*^9, 
+  3.891358751790722*^9}},ExpressionUUID->"96c9f08f-7971-4bec-9ec6-\
+c0d5bf42fedc"],
+
+Cell[CellGroupData[{
+
+Cell["Thresholding segmentation", "Subsection",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891096538433184*^9, 3.89109654180459*^9}, {
+  3.891097395305043*^9, 3.891097395877677*^9}, {3.8910974850903473`*^9, 
+  3.891097486253567*^9}, {3.891342431468978*^9, 3.891342437115471*^9}, {
+  3.891342492628126*^9, 3.891342506723246*^9}, {3.891352940896792*^9, 
+  3.891352946886242*^9}, {3.89135810453014*^9, 3.891358104733208*^9}, {
+  3.892646906939305*^9, 
+  3.892646933190165*^9}},ExpressionUUID->"fb6fd939-471f-4b24-8e4c-\
+3edfed2fee7e"],
+
+Cell["\<\
+Write \[OpenCurlyDoubleQuote]import\[CloseCurlyDoubleQuote] if you wish to \
+use the imported binaries or network probability maps as the binary \
+segmentation for the gray images. Otherwise write \
+\[OpenCurlyDoubleQuote]threshold\[CloseCurlyDoubleQuote] to use the result \
+from thresholding segmentation.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+  3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+  3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+  3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+  3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+  3.8914235387263985`*^9, 3.891423649693759*^9}, {3.89143374696549*^9, 
+  3.891433849565752*^9}},ExpressionUUID->"7198e94e-f634-40ed-bc94-\
+96ce5f211c17"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"binselect", "=", "\"\<import\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.891433723540485*^9, 3.8914337400731354`*^9}, {
+  3.9745644591057034`*^9, 3.97456449697966*^9}},
+ CellLabel->"In[30]:=",ExpressionUUID->"3897733b-a26e-4766-a9c6-c9a7528fcb17"],
+
+Cell["\<\
+If using thresholding segmentation input a list with the max threshold value \
+in the first position. This number needs to be between 0 and 1. Write \
+\[OpenCurlyDoubleQuote]yes\[CloseCurlyDoubleQuote] in the second position to \
+color negate the resulting binary image, otherwise write \
+\[OpenCurlyDoubleQuote]no\[CloseCurlyDoubleQuote]. The Length of the input \
+list has to be the same length of the list of  imported images. \
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, 
+   3.8922032961633167`*^9},ExpressionUUID->"49ab3ef1-8046-40ce-bc10-\
+dd0a13c8efa6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"threshvals", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0.5", ",", "\"\<yes\>\""}], "}"}], ",", 
+     RowBox[{"{", "2", "}"}]}], "]"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.863093550904475*^9, 3.8630936339472313`*^9}, {
+   3.863093871768288*^9, 3.863093915274915*^9}, {3.8643819748697906`*^9, 
+   3.864381975751909*^9}, {3.86438202554309*^9, 3.864382027163191*^9}, {
+   3.86543069199088*^9, 3.865430693077279*^9}, {3.865431196028514*^9, 
+   3.865431196971843*^9}, {3.8654321324608173`*^9, 3.865432133253378*^9}, {
+   3.869919825769043*^9, 3.8699198270789633`*^9}, {3.869928621783978*^9, 
+   3.8699286228618355`*^9}, {3.870533699722807*^9, 3.870533702667941*^9}, {
+   3.870536153674987*^9, 3.8705361577530813`*^9}, {3.870536989029775*^9, 
+   3.8705369898256164`*^9}, {3.8708712916651506`*^9, 3.870871292461829*^9}, {
+   3.871490562252556*^9, 3.8714905632409124`*^9}, {3.8715663383018*^9, 
+   3.871566339143554*^9}, 3.872164600500291*^9, {3.87226452973822*^9, 
+   3.8722645309747963`*^9}, 3.876478604883702*^9, {3.8856374501250153`*^9, 
+   3.885637451120074*^9}, {3.885637565446292*^9, 3.885637565886858*^9}, {
+   3.885638286012657*^9, 3.885638286408118*^9}, {3.885651660446709*^9, 
+   3.885651661995684*^9}, {3.8856517126335287`*^9, 3.8856517136074514`*^9}, {
+   3.885651910603004*^9, 3.885651921562289*^9}, {3.885651991872986*^9, 
+   3.885651992127683*^9}, {3.886260696860445*^9, 3.8862606976259165`*^9}, {
+   3.886592799940871*^9, 3.886592874969486*^9}, {3.891423529788045*^9, 
+   3.891423533227442*^9}, {3.8914236804050827`*^9, 3.891423680921785*^9}, 
+   3.891425351769711*^9, {3.891425405468926*^9, 3.891425410131511*^9}, {
+   3.891425605449836*^9, 3.891425637513029*^9}, {3.892203301614234*^9, 
+   3.892203313684403*^9}, {3.939988009565851*^9, 3.939988009704243*^9}, {
+   3.9481969932824745`*^9, 3.9481969963362236`*^9}, 3.948286156412472*^9, {
+   3.9482938633717403`*^9, 3.948293866872532*^9}, 3.9525112546741505`*^9},
+ CellLabel->"In[31]:=",ExpressionUUID->"d3c91e36-420d-4924-bfb4-0ba9fc51ecf1"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Image skeleton", "Section",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.77238491914182*^9, 3.772384938969769*^9}, {
+  3.772537870066352*^9, 3.772537870831804*^9}, {3.772540454800994*^9, 
+  3.772540458456403*^9}, {3.891088988234212*^9, 3.891088991323437*^9}, {
+  3.8910892733371367`*^9, 3.891089279769807*^9}, {3.891358748791428*^9, 
+  3.891358751790722*^9}, {3.89143173173528*^9, 3.891431735251231*^9}, {
+  3.892033072747993*^9, 
+  3.8920330728291397`*^9}},ExpressionUUID->"63629aec-1c7d-4b55-8abc-\
+1729181db5a4"],
+
+Cell[CellGroupData[{
+
+Cell["Skeleton of a single image", "Subsection",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.863178402470948*^9, 3.863178403385509*^9}, {
+  3.863189374873237*^9, 3.863189381321326*^9}, {3.863189415661889*^9, 
+  3.863189418187738*^9}, {3.863189623484187*^9, 3.8631896257642274`*^9}, {
+  3.864382213152033*^9, 3.864382217837672*^9}, {3.891433223056691*^9, 
+  3.8914332273222404`*^9}, {3.891618615561842*^9, 3.891618618752888*^9}, {
+  3.891618655464831*^9, 3.891618688676756*^9}, {3.891697756605706*^9, 
+  3.891697765084639*^9}},ExpressionUUID->"8b75063e-2877-4135-a3b7-\
+d0e6db5c283f"],
+
+Cell["\<\
+Input the position of the active image you wish to use  in the skeleton of  \
+single image section\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+  3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+  3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+  3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+  3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+  3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+  3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+  3.948370472804953*^9, 
+  3.9483704865460434`*^9}},ExpressionUUID->"a4fdbe46-c38d-4bbc-af7f-\
+ccd93fb9ec36"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"activeimgpos", "=", "1"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.891433298373258*^9, 3.891433305062101*^9}, {
+   3.89143336382485*^9, 3.89143337126505*^9}, 3.891447411287491*^9, {
+   3.8919620467444677`*^9, 3.8919620475399303`*^9}, 3.8956622280443807`*^9, 
+   3.92554576064584*^9, 3.933158484240343*^9, 3.952524782997469*^9, 
+   3.965137768352257*^9},
+ CellLabel->"In[32]:=",ExpressionUUID->"9c587891-486c-4210-b568-82b6e53075b2"],
+
+Cell["\<\
+Write \[OpenCurlyDoubleQuote]yes\[CloseCurlyDoubleQuote] to color negate the \
+active gray image. Otherwise write \[OpenCurlyDoubleQuote]no\
+\[CloseCurlyDoubleQuote].\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+  3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+  3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+  3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+  3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+  3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+  3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+  3.891434518193161*^9, 
+  3.891434544710314*^9}},ExpressionUUID->"0ff76c2b-c93b-4931-b27a-\
+7696ee670b37"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"colneg", "=", "\"\<no\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.8914344895336523`*^9, 3.891434509523127*^9}, {
+  3.933158492524301*^9, 3.93315849794466*^9}, {3.9483705236068954`*^9, 
+  3.948370524974121*^9}, {3.948370560169791*^9, 3.948370561073899*^9}, {
+  3.948370622635275*^9, 3.9483706237353477`*^9}, {3.948538247397217*^9, 
+  3.948538248240797*^9}, {3.952524789201395*^9, 3.952524789291132*^9}},
+ CellLabel->"In[33]:=",ExpressionUUID->"5e4a1529-31fc-4e6b-8695-df1a1f054fd3"],
+
+Cell["\<\
+Input the kernel size if you wish to use a gaussian blur on the selected \
+binary image. Set to 0 if you don\[CloseCurlyQuote]t want to apply a gaussian \
+blur. \
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891447910633494*^9, 
+   3.891447921138838*^9}, 3.892568162570028*^9, {3.947934849996231*^9, 
+   3.947934850124811*^9}, {3.9483706354244175`*^9, 
+   3.948370640119213*^9}},ExpressionUUID->"b0d41f5f-fdee-4f47-bdb5-\
+d1c50a5fe96f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"kernsize", "=", "0"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.891433591810196*^9, 3.891433600962298*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"fcec2242-65b6-40b6-ac2b-dc75ec040e40"],
+
+Cell["\<\
+Input the minimum component pixel count (0 to large number) and minimum \
+elongation (0 to 1) to remove small components (particles) in the binary \
+image. Set these parameters to 0 if you don't want to use this filter.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.948370926545613*^9, 
+  3.948370929686685*^9}},ExpressionUUID->"b9a1664d-b997-6d47-a26b-\
+eb37ecdc9815"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"mincount", ",", "minelongation"}], "}"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0"}], "}"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellLabel->"In[35]:=",ExpressionUUID->"46f2a31b-1c94-9f47-a2e2-9addaf5ddd3f"],
+
+Cell["\<\
+The distance transform results in a radial dimension. Write \
+\[OpenCurlyDoubleQuote]yes\[CloseCurlyDoubleQuote]  if you wich to multiply \
+all the data by 2 to approximate a full  width measurement. Otherwise write \
+\[OpenCurlyDoubleQuote]no\[CloseCurlyDoubleQuote]. This parameter affects the \
+valsscaled variable.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.89143399583138*^9}, {3.891434233495405*^9, 
+   3.8914342548537197`*^9}, {3.8914369970169835`*^9, 
+   3.8914370675628586`*^9}, {3.891437099048087*^9, 3.8914371260774145`*^9}, {
+   3.891437236069763*^9, 3.891437264481409*^9}, {3.891438208391657*^9, 
+   3.891438226760687*^9}, 
+   3.933323141445572*^9},ExpressionUUID->"bdbc9f1f-85d1-41d3-aeff-\
+c232d2ba69f6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"multby2", "=", "\"\<yes\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.891437040196059*^9, 3.891437047942895*^9}, {
+  3.891962057597129*^9, 3.891962058562022*^9}, {3.891962703644048*^9, 
+  3.891962704711526*^9}},
+ CellLabel->"In[36]:=",ExpressionUUID->"56addd0a-0c8b-429b-9f45-c9a1dc829589"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Visualizations 1", "Subsection",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.863178402470948*^9, 3.863178403385509*^9}, {
+  3.863189374873237*^9, 3.863189381321326*^9}, {3.863189415661889*^9, 
+  3.863189418187738*^9}, {3.863189623484187*^9, 3.8631896257642274`*^9}, {
+  3.864382213152033*^9, 3.864382217837672*^9}, {3.891433223056691*^9, 
+  3.8914332273222404`*^9}, {3.891618615561842*^9, 3.891618618752888*^9}, {
+  3.891618655464831*^9, 3.891618688676756*^9}, {3.891697756605706*^9, 
+  3.891697765084639*^9}, {3.948370732870334*^9, 
+  3.948370738054755*^9}},ExpressionUUID->"d3e0094e-390d-d04f-943a-\
+42b28d752253"],
+
+Cell["Image display size for Visualizations 1.", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.947935120585165*^9, 3.947935120964474*^9}, 
+   3.947945428666765*^9},ExpressionUUID->"d81d43a6-b1d0-c44e-95a1-\
+2cc44e3de7dc"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"imgsize1", "=", "600"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{
+  3.947945434742626*^9, {3.948197113680134*^9, 3.948197114072399*^9}},
+ CellLabel->"In[37]:=",ExpressionUUID->"93f9115f-1336-1e48-866e-e3f3152d924a"],
+
+Cell["\<\
+Input the maximum number of iterations for the thinning operator.  Also input \
+the number of iteration steps. These parameters are only used for the various \
+display functions in Visualizations 1.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.89143399583138*^9}, {3.891434233495405*^9, 
+   3.8914342548537197`*^9}, 3.892568184618803*^9, {3.947934892470495*^9, 
+   3.947934920881005*^9}},ExpressionUUID->"c1a62f36-c58c-49f4-9cef-\
+19b1af3f84ac"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"maxiter", ",", "stepiter"}], "}"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"25", ",", "2"}], "}"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.891434271814195*^9, 3.891434273861081*^9}, {
+  3.9666047733380775`*^9, 3.966604809504881*^9}},
+ CellLabel->"In[38]:=",ExpressionUUID->"cf3ee01c-0be8-45c7-90f7-9a9c5038e329"],
+
+Cell["\<\
+Input a bin size for the histogram. This value affects function thinTdtV1.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+  3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+  3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+  3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+  3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+  3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+  3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+  3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+  3.891443126529173*^9}},ExpressionUUID->"4775be33-4646-4ed2-967a-\
+5949b49a2be9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"binsize", "=", "2"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.891443028163823*^9, 3.891443039066326*^9}, 
+   3.966604767926436*^9},
+ CellLabel->"In[39]:=",ExpressionUUID->"a2f2408b-fe08-43d2-9c9f-d011efb84acb"],
+
+Cell["\<\
+Partition the active images into smaller images to view the effect of the \
+thinning operator on the resulting skeleton. Input an integer (number between \
+1 and 10) the larger the number the smaller the sub images. This number \
+affects functions thinTdtV3 and thinTdtV4.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+  3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+  3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+  3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+  3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+  3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+  3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+  3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+  3.891443126529173*^9}, {3.891447107307545*^9, 
+  3.891447236554696*^9}},ExpressionUUID->"35a029ae-1a9c-47e4-8ecc-\
+a64783199b70"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"partnum", "=", "2"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.891447094389807*^9, 3.891447098709832*^9}, {
+  3.891962343569224*^9, 3.891962343979212*^9}, {3.966604909349514*^9, 
+  3.966604917547449*^9}},
+ CellLabel->"In[40]:=",ExpressionUUID->"c17c75d4-1a1b-491b-9599-5521a00ee373"],
+
+Cell["\<\
+Input the contrast, brightness and gamma parameters to adjust the gray image \
+display . These parameters effects the function  thinTdtV4. The input format \
+is {c,b,g}. No adjustment corresponds to {0,0,1}.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+  3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+  3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+  3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+  3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+  3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+  3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+  3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+  3.891443126529173*^9}, {3.891447107307545*^9, 3.891447236554696*^9}, {
+  3.895586513878534*^9, 3.89558657695634*^9}, {3.895586613287539*^9, 
+  3.8955866505202975`*^9}, {3.8955873174305096`*^9, 3.8955873447411833`*^9}, {
+  3.895587387647057*^9, 
+  3.895587398292956*^9}},ExpressionUUID->"58ce45ed-184a-4e18-99d7-\
+5dbd558fdd4f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"imgadj", "=", 
+   RowBox[{"{", 
+    RowBox[{"0.", ",", "0.", ",", "1.0"}], "}"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.895586334172258*^9, 3.895586352572266*^9}},
+ CellLabel->"In[41]:=",ExpressionUUID->"d8841636-d347-42fd-b335-d50433fe3a1a"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Skeleton of all images", "Subsection",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,ExpressionUUID->"2e09802d-e06d-6b4b-8f00-18f8d78b9269"],
+
+Cell["\<\
+Input the kernel size to apply a gaussian blur on the binary images. Only \
+positive integer values are allowed and practical values span from 0 to 6. \
+Set to 0 if you don't want to apply a gaussian blur. \
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.974975367720569*^9, 
+  3.974975453252905*^9}},ExpressionUUID->"f7de7ba3-1277-5b41-8415-\
+3954e39bf264"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"kernsize1", "=", "0"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellLabel->"In[42]:=",ExpressionUUID->"6c1f04a5-c63b-474f-816f-40ecca11cded"],
+
+Cell["\<\
+Input the minimum component pixel count (0 to large number) and minimum \
+elongation (0 to 1) to remove small components (particles) in the binary \
+images. Set these parameters to 0 if you don't want to use this filter.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.948370909374796*^9, 
+  3.948370911542734*^9}},ExpressionUUID->"5fc67ff1-e62c-a445-a68d-\
+fc32d958e6ac"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"mincount1", ",", "minelongation1"}], "}"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0"}], "}"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.951820636950187*^9, 3.951820637138283*^9}, {
+  3.951820871676905*^9, 3.9518208723212185`*^9}, {3.964538776153055*^9, 
+  3.964538788160927*^9}},
+ CellLabel->"In[43]:=",ExpressionUUID->"cb43071e-d272-9f4b-93b7-8ad224cbf876"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Skeleton segment refining", "Section",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.77238491914182*^9, 3.772384938969769*^9}, {
+  3.772537870066352*^9, 3.772537870831804*^9}, {3.772540454800994*^9, 
+  3.772540458456403*^9}, {3.891088988234212*^9, 3.891088991323437*^9}, {
+  3.8910892733371367`*^9, 3.891089279769807*^9}, {3.891358748791428*^9, 
+  3.891358751790722*^9}, {3.89143173173528*^9, 3.891431760830717*^9}, {
+  3.947868014764238*^9, 
+  3.947868017376449*^9}},ExpressionUUID->"db6447fe-06e3-4e20-9402-\
+0af48bc15f01"],
+
+Cell[CellGroupData[{
+
+Cell["Trimming and filtering skeleton segments", "Subsection",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.863178402470948*^9, 3.863178403385509*^9}, {
+  3.863189374873237*^9, 3.863189381321326*^9}, {3.863189415661889*^9, 
+  3.863189418187738*^9}, {3.863189623484187*^9, 3.8631896257642274`*^9}, {
+  3.864382213152033*^9, 3.864382217837672*^9}, {3.891433223056691*^9, 
+  3.8914332273222404`*^9}, {3.891618615561842*^9, 3.891618618752888*^9}, {
+  3.891618655464831*^9, 3.891618688676756*^9}, {3.9478680312225075`*^9, 
+  3.947868033465391*^9}},ExpressionUUID->"a6957136-3e44-4cc9-9acd-\
+5d03155fcfe5"],
+
+Cell["\<\
+If you wish to trim the individual skeleton segments by eliminating data \
+points from the ends enter a number different from zero. Accepted inputs are \
+numbers between 0 and 1. This parameter affects the evaluation of variable \
+modbc. Entering 1 will eliminate all data points.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+  3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+  3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+  3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+  3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+  3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+  3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+  3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+  3.891443126529173*^9}, {3.8915996274440317`*^9, 3.89159963207523*^9}, {
+  3.891599691053221*^9, 3.891599811371462*^9}, {3.891617562417513*^9, 
+  3.8916175761273284`*^9}, {3.892203361517863*^9, 3.8922033618264303`*^9}, {
+  3.947935023027897*^9, 
+  3.9479350265645256`*^9}},ExpressionUUID->"cf548db9-27ec-49f4-a962-\
+dcc476623aaf"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dropfrac", "=", "0.1"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.8928972515096226`*^9, 3.892897251794492*^9}, {
+   3.948537776865946*^9, 3.948537777834438*^9}, 3.951820930518274*^9, 
+   3.959944265700579*^9, 3.96652204495946*^9, {3.968324094687599*^9, 
+   3.9683240978793144`*^9}},
+ CellLabel->"In[44]:=",ExpressionUUID->"46e526a6-a9c8-4e1c-80a5-f475a49eda05"],
+
+Cell["\<\
+Enter the number 2 if you want FACT to trim from both skeleton segment ends. \
+Otherwise, enter 1 and FACT will not trim from the skeleton segment side \
+adjacent to an end point.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,ExpressionUUID->"c8edc42d-f854-144d-82a2-d5f172f5f1fe"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"trimssept", "=", "1"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.966521591975291*^9, 3.9665216202845535`*^9}, {
+   3.9665220138726387`*^9, 3.966522018988837*^9}, 3.966602103575119*^9, 
+   3.9683241037582493`*^9, {3.9749120289545975`*^9, 3.974912029063698*^9}},
+ CellLabel->"In[45]:=",ExpressionUUID->"ed554563-4a19-3d4b-abcf-2852d8d0b6c8"],
+
+Cell["\<\
+Input an angle threshold (deg) to filter skeleton segments. This angle \
+represents the average distance transform rate of change along a skeleton \
+segment. Skeleton segments with an angle higher than anglethreshold will be \
+filtered out. Input a number larger than 60 to forgo this filter. This \
+parameter affects the evaluation of the variable sstoremove.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+   3.891443126529173*^9}, {3.8915996274440317`*^9, 3.89159963207523*^9}, {
+   3.891599691053221*^9, 3.891599811371462*^9}, {3.891617224342258*^9, 
+   3.891617335551484*^9}, {3.891617398734078*^9, 3.8916174757520037`*^9}, {
+   3.8916175092872047`*^9, 3.891617544686754*^9}, 3.89256832865699*^9, 
+   3.947868478613487*^9, {3.94793507788953*^9, 3.94793508128486*^9}, {
+   3.947955173052351*^9, 3.9479552226237144`*^9}, {3.947955274717745*^9, 
+   3.947955274833073*^9}},ExpressionUUID->"dccfd7fb-b83f-4b5e-892f-\
+f6ce0e16d621"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"anglethreshold", "=", "30"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.891617174903756*^9, 3.891617193971563*^9}, {
+   3.8916174818455863`*^9, 3.8916175022583957`*^9}, {3.892897563232427*^9, 
+   3.892897563348474*^9}, {3.94853778041196*^9, 3.948537780490065*^9}, 
+   3.951820556257906*^9, 3.951821023275286*^9, {3.952511624627786*^9, 
+   3.952511639128359*^9}, {3.952523710149496*^9, 3.952523714017535*^9}, 
+   3.952523795276102*^9, 3.956663826477262*^9, 3.959944268025328*^9, {
+   3.9645387948783493`*^9, 3.9645387959091015`*^9}, 3.965138839727022*^9, {
+   3.965834710832302*^9, 3.965834712347601*^9}, 3.966522896701575*^9, {
+   3.966603249792925*^9, 3.966603250044849*^9}, 3.9666033168055973`*^9, {
+   3.9666034772345753`*^9, 3.966603477375738*^9}, 3.968324106917668*^9, 
+   3.9749120347030287`*^9},
+ CellLabel->"In[46]:=",ExpressionUUID->"e4281288-7086-4a5d-a7f8-434ec4e8d9f3"],
+
+Cell["\<\
+Enter \[OpenCurlyDoubleQuote]yes\[CloseCurlyDoubleQuote] if you wish to \
+account for the skeleton segment orientation effect on the width statistics. \
+Otherwise enter \[OpenCurlyDoubleQuote]no\[CloseCurlyDoubleQuote].\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+   3.891443126529173*^9}, {3.8915996274440317`*^9, 3.89159963207523*^9}, {
+   3.891599691053221*^9, 3.891599811371462*^9}, {3.891617224342258*^9, 
+   3.891617335551484*^9}, {3.891617398734078*^9, 3.8916174757520037`*^9}, {
+   3.8916175092872047`*^9, 3.891617544686754*^9}, 3.89256832865699*^9, 
+   3.947868478613487*^9, {3.94793507788953*^9, 3.94793508128486*^9}, {
+   3.947952911729738*^9, 
+   3.947952973234754*^9}},ExpressionUUID->"caf92f2a-84ff-0c48-a856-\
+22bcecb574b3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"orientcorr", "=", "\"\<yes\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.947952884239416*^9, 3.947952897278009*^9}, 
+   3.9479529771451664`*^9, {3.9479531752814884`*^9, 3.947953182554851*^9}},
+ CellLabel->"In[47]:=",ExpressionUUID->"a22d0f4b-c0c9-a041-bf74-e9ab932dce10"],
+
+Cell["\<\
+Input a minimum pixel count to filter small skeleton segments. If you do not \
+wish to use this filter input 0.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+   3.891443126529173*^9}, {3.8915996274440317`*^9, 3.89159963207523*^9}, {
+   3.891599691053221*^9, 3.891599811371462*^9}, {3.891617224342258*^9, 
+   3.891617335551484*^9}, {3.891617398734078*^9, 3.8916174757520037`*^9}, {
+   3.8916175092872047`*^9, 3.891617544686754*^9}, 3.89256832865699*^9, 
+   3.947868478613487*^9, {3.94793507788953*^9, 3.94793508128486*^9}, {
+   3.947952911729738*^9, 3.947952973234754*^9}, {3.949489045674652*^9, 
+   3.949489085729671*^9}, {3.949504209453811*^9, 
+   3.949504210281307*^9}},ExpressionUUID->"688559b9-416c-ed4a-8fbf-\
+24f951e59977"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ssmincount", "=", "0"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.949488997515465*^9, 3.949489012295664*^9}, {
+   3.949489330159384*^9, 3.949489353706938*^9}, 3.9494896148677387`*^9, 
+   3.949492893924755*^9, {3.951821036010448*^9, 3.9518210360734024`*^9}, {
+   3.95251164808232*^9, 3.9525116492609005`*^9}, {3.956663705454853*^9, 
+   3.95666370843803*^9}, 3.964538803585615*^9},
+ CellLabel->"In[48]:=",ExpressionUUID->"7e4ada5b-e7c6-aa48-9e75-dfa3558166fe"],
+
+Cell["\<\
+Input the maximum radial distance (pixels) used to concatenate nearby \
+junction points. If you do not wish to use this filter input 0.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,ExpressionUUID->"23017f17-5062-9042-992e-8ef374979d18"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"joinjpdist", "=", "4"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.966525740977932*^9, 3.966525753661001*^9}, {
+   3.966525834250829*^9, 3.966525834671362*^9}, 3.966525945079067*^9, {
+   3.966530305389824*^9, 3.966530352385559*^9}},
+ CellLabel->"In[49]:=",ExpressionUUID->"5bdc9f35-e5e9-1749-ad77-6112b31895d0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Visualizations 2", "Subsection",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.863178402470948*^9, 3.863178403385509*^9}, {
+   3.863189374873237*^9, 3.863189381321326*^9}, {3.863189415661889*^9, 
+   3.863189418187738*^9}, {3.863189623484187*^9, 3.8631896257642274`*^9}, {
+   3.864382213152033*^9, 3.864382217837672*^9}, {3.891433223056691*^9, 
+   3.8914332273222404`*^9}, {3.891618615561842*^9, 3.891618618752888*^9}, {
+   3.891618655464831*^9, 3.891618688676756*^9}, {3.891697756605706*^9, 
+   3.891697765084639*^9}, {3.948370732870334*^9, 3.948370738054755*^9}, 
+   3.948370865465477*^9},ExpressionUUID->"944e29c0-37b2-734a-ab13-\
+4b72a300cace"],
+
+Cell["\<\
+Input a point size to use for the skeleton overlay graphics. An appropriate \
+range is between 0.0010 and 0.0045.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+   3.891443126529173*^9}, {3.8915996274440317`*^9, 3.89159963207523*^9}, {
+   3.891599691053221*^9, 3.891599811371462*^9}, {3.891617224342258*^9, 
+   3.891617335551484*^9}, {3.891617398734078*^9, 3.8916174757520037`*^9}, {
+   3.8916175092872047`*^9, 3.891617544686754*^9}, {3.8925652828871064`*^9, 
+   3.892565318910209*^9}, {3.892646057393101*^9, 3.892646139275348*^9}, {
+   3.892646178832674*^9, 3.892646259633767*^9}, {3.895591825113908*^9, 
+   3.895591854561852*^9}, 3.8955919637019634`*^9, {3.9479556887449474`*^9, 
+   3.947955713193855*^9}, {3.948299583006132*^9, 
+   3.948299651769007*^9}},ExpressionUUID->"76a04de1-387b-c54b-8dec-\
+1b7baf068cee"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ptsize", "=", "0.0015"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.94829930091943*^9, 3.9482993160679245`*^9}, {
+   3.948538343575115*^9, 3.948538383439747*^9}, 3.952511601084461*^9, {
+   3.9525116318549557`*^9, 3.952511635075033*^9}, {3.957522300335636*^9, 
+   3.957522303426819*^9}, {3.964538808897099*^9, 3.964538809334498*^9}, 
+   3.966530144460356*^9, 3.966530268413311*^9, {3.974991004989397*^9, 
+   3.974991005070841*^9}, {3.9749914277629757`*^9, 3.9749914285089817`*^9}},
+ CellLabel->"In[50]:=",ExpressionUUID->"a1105877-7d98-2346-b431-d2babda3442f"],
+
+Cell["Select the display color of the skeleton segment points.", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,ExpressionUUID->"7b5a2e90-3eda-ce42-aa72-6ef1e0239a66"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sscolor", "=", 
+   RowBox[{"RGBColor", "[", 
+    RowBox[{
+     RowBox[{"26", "/", "255"}], ",", 
+     RowBox[{"255", "/", "255"}], ",", 
+     RowBox[{"26", "/", "255"}]}], "]"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.96652635247266*^9, 3.966526402754236*^9}},
+ CellLabel->"In[51]:=",ExpressionUUID->"9bc72273-0c95-3e4f-8494-9ca47e3a2ec6"],
+
+Cell["Select the display color of the binary image overlay.", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+   3.891443126529173*^9}, {3.8915996274440317`*^9, 3.89159963207523*^9}, {
+   3.891599691053221*^9, 3.891599811371462*^9}, {3.891617224342258*^9, 
+   3.891617335551484*^9}, {3.891617398734078*^9, 3.8916174757520037`*^9}, {
+   3.8916175092872047`*^9, 3.891617544686754*^9}, {3.8925652828871064`*^9, 
+   3.892565318910209*^9}, {3.892646057393101*^9, 3.892646139275348*^9}, {
+   3.892646178832674*^9, 3.892646259633767*^9}, {3.895591825113908*^9, 
+   3.895591854561852*^9}, 3.8955919637019634`*^9, {3.9479556887449474`*^9, 
+   3.947955713193855*^9}, {3.948299583006132*^9, 3.948299651769007*^9}, {
+   3.966528887519638*^9, 3.966528977092167*^9}, {3.966607973161583*^9, 
+   3.9666079779440155`*^9}},ExpressionUUID->"625ccf99-b3b3-d842-8947-\
+975e18e46c4d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"bincolor", "=", 
+   RowBox[{"RGBColor", "[", 
+    RowBox[{
+     RowBox[{"75", "/", "255"}], ",", 
+     RowBox[{"0", "/", "255"}], ",", 
+     RowBox[{"146", "/", "255"}]}], "]"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.9665263714537487`*^9, 3.966526396089817*^9}},
+ CellLabel->"In[52]:=",ExpressionUUID->"03b719d6-540e-064f-a854-28d96afb2582"],
+
+Cell["\<\
+Input the opacity level for the binary image overlay. Enter a number between \
+0 and 1 where 0 is completely transparent and 1 is fully opaque. \
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+   3.891443126529173*^9}, {3.8915996274440317`*^9, 3.89159963207523*^9}, {
+   3.891599691053221*^9, 3.891599811371462*^9}, {3.891617224342258*^9, 
+   3.891617335551484*^9}, {3.891617398734078*^9, 3.8916174757520037`*^9}, {
+   3.8916175092872047`*^9, 3.891617544686754*^9}, {3.8925652828871064`*^9, 
+   3.892565318910209*^9}, {3.892646057393101*^9, 3.892646139275348*^9}, {
+   3.892646178832674*^9, 3.892646259633767*^9}, {3.895591825113908*^9, 
+   3.895591854561852*^9}, 3.8955919637019634`*^9, {3.9479556887449474`*^9, 
+   3.947955713193855*^9}, {3.948299583006132*^9, 3.948299651769007*^9}, {
+   3.966528887519638*^9, 3.966529093831829*^9}, 
+   3.966608140680162*^9},ExpressionUUID->"36ca543a-cc3f-4c47-bead-\
+95ada35db152"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"binopacity", "=", "0.3"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.966526408310131*^9, 3.966526428345318*^9}},
+ CellLabel->"In[53]:=",ExpressionUUID->"36c7d920-d6fa-1647-8b42-e8166a3e9d8b"],
+
+Cell["Image display size for Visualizations 2.", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.947935120585165*^9, 
+  3.947935120964474*^9}},ExpressionUUID->"f653dfda-febc-8e41-9907-\
+90f0936b1592"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"imgsize2", "=", "450"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{
+  3.947945443171339*^9, {3.948204597890541*^9, 3.948204598163401*^9}, {
+   3.948538695796711*^9, 3.9485386958906918`*^9}, {3.951821402525305*^9, 
+   3.951821403295259*^9}, {3.9658348287536926`*^9, 3.965834828894497*^9}, 
+   3.966604205970829*^9, {3.9751561724265747`*^9, 3.9751561864431477`*^9}, {
+   3.975156709700016*^9, 3.9751567239154205`*^9}},
+ CellLabel->
+  "In[166]:=",ExpressionUUID->"36277135-9ca6-9546-a5f1-ed1e108b4593"],
+
+Cell["\<\
+Input a font size for the skeleton segment label used in labeledss.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+   3.891443126529173*^9}, {3.8915996274440317`*^9, 3.89159963207523*^9}, {
+   3.891599691053221*^9, 3.891599811371462*^9}, {3.891617224342258*^9, 
+   3.891617335551484*^9}, {3.891617398734078*^9, 3.8916174757520037`*^9}, {
+   3.8916175092872047`*^9, 3.891617544686754*^9}, {3.8925652828871064`*^9, 
+   3.892565318910209*^9}, {3.892646057393101*^9, 3.892646139275348*^9}, {
+   3.892646178832674*^9, 3.892646259633767*^9}, {3.895591825113908*^9, 
+   3.895591854561852*^9}, 3.8955919637019634`*^9, {3.9479556887449474`*^9, 
+   3.947955713193855*^9}},ExpressionUUID->"8d6043fb-6c5d-48ea-92f7-\
+532819abbce3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sslabelsize", "=", "10"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.8955916218173246`*^9, 3.895591632544399*^9}, 
+   3.895591698551128*^9, 3.895663813032219*^9, {3.947955727804405*^9, 
+   3.9479557354240513`*^9}, {3.948537789816018*^9, 3.948537790597122*^9}, {
+   3.9485380970692825`*^9, 3.948538098865708*^9}, {3.965138908386759*^9, 
+   3.965138917198185*^9}},
+ CellLabel->"In[55]:=",ExpressionUUID->"ab919906-55aa-4a25-a9b0-1a715b8308b9"],
+
+Cell["\<\
+Select a display color for the skeleton segment index labels.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+   3.891443126529173*^9}, {3.8915996274440317`*^9, 3.89159963207523*^9}, {
+   3.891599691053221*^9, 3.891599811371462*^9}, {3.891617224342258*^9, 
+   3.891617335551484*^9}, {3.891617398734078*^9, 3.8916174757520037`*^9}, {
+   3.8916175092872047`*^9, 3.891617544686754*^9}, {3.8925652828871064`*^9, 
+   3.892565318910209*^9}, {3.892646057393101*^9, 3.892646139275348*^9}, {
+   3.892646178832674*^9, 3.892646259633767*^9}, {3.895591825113908*^9, 
+   3.895591854561852*^9}, 3.8955919637019634`*^9, {3.9479556887449474`*^9, 
+   3.947955713193855*^9}, {3.948299583006132*^9, 3.948299651769007*^9}, {
+   3.966528887519638*^9, 3.966528962910179*^9}, {3.9665293863483357`*^9, 
+   3.966529391711632*^9}, 3.9666029467253075`*^9, {3.966608248319256*^9, 
+   3.9666082514934483`*^9}},ExpressionUUID->"0a0ccac8-6b63-6a4a-8ad9-\
+0f7a7a7e48f2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"sslabelcolor", "=", "Red"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.966529364023693*^9, 3.9665293727539825`*^9}, {
+  3.9666029651260967`*^9, 3.966602965267837*^9}},
+ CellLabel->"In[56]:=",ExpressionUUID->"bb471f1c-2879-e141-9bf0-f35383d9e1b4"],
+
+Cell["\<\
+Indicate a point of interest to visualize in graphic locdisplay. Possible \
+entries are \[OpenCurlyDoubleQuote]max\[CloseCurlyDoubleQuote],  \
+\[OpenCurlyDoubleQuote]mean\[CloseCurlyDoubleQuote] , \
+\[CloseCurlyDoubleQuote]median\[CloseCurlyDoubleQuote],  and \
+\[OpenCurlyDoubleQuote]medoid\[CloseCurlyDoubleQuote].\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQAWIQbR92eL3qvzeOW4O2bADRevM8ItSAdLWeVTyI3rAx
+8zKIlnfJAdN/Pz3gVQfSKmGG/CDaLW3jTi0gvbeP/SCIvtLvcw5EHwhvOQ+i
+X0TPvA+iLWKyn4LoFXbhar4gfcZmJiBa5ap/dgCQnnHOsQlEdywKfhMIpJNK
+dT+C6ADFQ+ZBQNrj9S4rEH3BQmddGJD+8+7CNhDdZJqnuBhIe2UwKYHov5sT
+NUE0y+NsCxB9/DPXztVA+tDSj8dA9MTa6+dAdJZAxQ0QfcJg5R0Q/eSn6EMQ
+rZscs6SK4a1jgcLdFSDaZ4qO6CIgve58hjyIdl0apQKiL7mX6IFoAH6MsSo=
+
+  "],ExpressionUUID->"575897b5-ed0e-432c-8830-36cbac8d9531"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pointofinterest", "=", "\"\<medoid\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.89264585323467*^9, 3.892645878304167*^9}},
+ CellLabel->"In[57]:=",ExpressionUUID->"c5fed018-9d13-4230-9be7-fa31678d9016"],
+
+Cell["\<\
+Select a display color for the junction points in the junction point graphic.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+   3.891443126529173*^9}, {3.8915996274440317`*^9, 3.89159963207523*^9}, {
+   3.891599691053221*^9, 3.891599811371462*^9}, {3.891617224342258*^9, 
+   3.891617335551484*^9}, {3.891617398734078*^9, 3.8916174757520037`*^9}, {
+   3.8916175092872047`*^9, 3.891617544686754*^9}, {3.8925652828871064`*^9, 
+   3.892565318910209*^9}, {3.892646057393101*^9, 3.892646139275348*^9}, {
+   3.892646178832674*^9, 3.892646259633767*^9}, {3.895591825113908*^9, 
+   3.895591854561852*^9}, 3.8955919637019634`*^9, {3.9479556887449474`*^9, 
+   3.947955713193855*^9}, {3.948299583006132*^9, 3.948299651769007*^9}, {
+   3.966528887519638*^9, 3.966528962910179*^9}, {3.9665293863483357`*^9, 
+   3.966529391711632*^9}, {3.966529549577303*^9, 3.966529554926573*^9}, {
+   3.966608313835974*^9, 3.966608322221111*^9}, {3.96660895567478*^9, 
+   3.9666089569489384`*^9}},ExpressionUUID->"ae567fac-5dc4-694c-b5ed-\
+810ea9d5b5f5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"jpcolor", "=", "Red"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.966529527822779*^9, 3.966529535271075*^9}},
+ CellLabel->"In[58]:=",ExpressionUUID->"4caddc4b-161e-f048-8136-7648660cfb53"],
+
+Cell["\<\
+Enter a point size to use for the junction points in the junction point \
+graphic. An appropriate value range is between 0.001 and 0.010.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+   3.891443126529173*^9}, {3.8915996274440317`*^9, 3.89159963207523*^9}, {
+   3.891599691053221*^9, 3.891599811371462*^9}, {3.891617224342258*^9, 
+   3.891617335551484*^9}, {3.891617398734078*^9, 3.8916174757520037`*^9}, {
+   3.8916175092872047`*^9, 3.891617544686754*^9}, {3.8925652828871064`*^9, 
+   3.892565318910209*^9}, {3.892646057393101*^9, 3.892646139275348*^9}, {
+   3.892646178832674*^9, 3.892646259633767*^9}, {3.895591825113908*^9, 
+   3.895591854561852*^9}, 3.8955919637019634`*^9, {3.9479556887449474`*^9, 
+   3.947955713193855*^9}, {3.948299583006132*^9, 3.948299651769007*^9}, {
+   3.966528887519638*^9, 3.966528962910179*^9}, {3.9665293863483357`*^9, 
+   3.966529391711632*^9}, {3.966529549577303*^9, 3.966529554926573*^9}, {
+   3.966529699745384*^9, 3.9665297203270016`*^9}, {3.966608385853067*^9, 
+   3.96660845028441*^9}, {3.966608991646299*^9, 
+   3.966609019294615*^9}},ExpressionUUID->"c80e8764-18ea-1849-a587-\
+047d449f8c61"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"jppointsize", "=", "0.007"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.966529654389599*^9, 3.9665296736288967`*^9}, 
+   3.9665301302868977`*^9},
+ CellLabel->"In[59]:=",ExpressionUUID->"25a018e6-b3b8-3048-95a5-11ce57d10a90"],
+
+Cell["\<\
+Input the parameters to overlay a scale bar on top of the results for \
+filtbranchdispl. The format for this variable is {xfrac, yfrac, sizefrac, \
+color, number display shift, and number font size, unit}. xfrac and yfrac are \
+the location of the center of the scale bar as fractional coordinates, \
+sizefrac is the fraction of the total image size you want the scale bar to \
+take up, color is just the color of the scale bar and scale number, number \
+display shift controls how much to shift the scale number in y with respect \
+to the scale bar center, number font size is just the overall size of the \
+scale number, and unit is just the units of the scale bar as a string.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+   3.891443126529173*^9}, {3.8915996274440317`*^9, 3.89159963207523*^9}, {
+   3.891599691053221*^9, 3.891599811371462*^9}, {3.891617224342258*^9, 
+   3.891617335551484*^9}, {3.891617398734078*^9, 3.8916174757520037`*^9}, {
+   3.8916175092872047`*^9, 3.891617544686754*^9}, {3.8925652828871064`*^9, 
+   3.892565318910209*^9}, {3.892646057393101*^9, 3.892646139275348*^9}, {
+   3.892646178832674*^9, 3.892646259633767*^9}, {3.8956733725627985`*^9, 
+   3.895673516130931*^9}, {3.895674193406158*^9, 3.895674215869871*^9}, {
+   3.895675370739374*^9, 3.895675616327083*^9}, {3.895675718528111*^9, 
+   3.895675730375848*^9}, 3.895675766326073*^9, 
+   3.896539292943473*^9},ExpressionUUID->"7f1dd054-bceb-4d81-8d67-\
+aebf82fccb0f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"scalebarparams", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.8", ",", "0.1", ",", "0.2", ",", "Black", ",", "34", ",", "24", ",", 
+     " ", "\"\< um\>\""}], "}"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.8956732499611535`*^9, 3.895673286509472*^9}, {
+   3.8965392846357203`*^9, 3.8965392875756273`*^9}, {3.920737627194843*^9, 
+   3.9207376309127216`*^9}, {3.920738112071165*^9, 3.9207381359226503`*^9}, {
+   3.920739382630256*^9, 3.9207394262312307`*^9}, {3.920739688076099*^9, 
+   3.920739725023363*^9}, {3.933332140079727*^9, 3.933332203590399*^9}, {
+   3.933332242740116*^9, 3.933332243348952*^9}, {3.93333254771014*^9, 
+   3.933332572879446*^9}, {3.933332748556736*^9, 3.933332751984329*^9}, {
+   3.9333329053708344`*^9, 3.933332911024391*^9}, {3.93333298140938*^9, 
+   3.9333329826138477`*^9}, {3.933333278950747*^9, 3.933333279483948*^9}, 
+   3.948537809321152*^9, {3.9485380093205833`*^9, 3.948538043840613*^9}, {
+   3.948539592868391*^9, 3.948539600382721*^9}, {3.948543823012062*^9, 
+   3.948543839946375*^9}, {3.948543897768621*^9, 3.948543914430437*^9}, {
+   3.948554833006056*^9, 3.948554842339733*^9}, {3.948554946159462*^9, 
+   3.948554960337237*^9}, {3.948554992936352*^9, 3.9485550030149384`*^9}, {
+   3.948555109785818*^9, 3.948555117489286*^9}, {3.948556474555509*^9, 
+   3.948556474678882*^9}, {3.966529137098568*^9, 3.966529241271351*^9}, {
+   3.974991841494131*^9, 3.974991913662895*^9}, {3.974991947048914*^9, 
+   3.974991960438299*^9}, {3.9749925307939987`*^9, 3.9749925314033413`*^9}, {
+   3.974992583883848*^9, 3.974992585574173*^9}, 3.9749926172261753`*^9, 
+   3.975079679046673*^9},
+ CellLabel->"In[60]:=",ExpressionUUID->"e91b0ce6-3fac-4679-9e4c-5403bf849618"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Statistical analysis", "Section",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.77238491914182*^9, 3.772384938969769*^9}, {
+  3.772537870066352*^9, 3.772537870831804*^9}, {3.772540454800994*^9, 
+  3.772540458456403*^9}, {3.891088988234212*^9, 3.891088991323437*^9}, {
+  3.8910892733371367`*^9, 3.891089279769807*^9}, {3.891358748791428*^9, 
+  3.891358751790722*^9}, {3.89143173173528*^9, 
+  3.8914317848681593`*^9}},ExpressionUUID->"e2a5bada-5be3-4a85-914d-\
+51a7eadf6ec4"],
+
+Cell[CellGroupData[{
+
+Cell["Plot parameters", "Subsection",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891096538433184*^9, 3.89109654180459*^9}, {
+  3.891097395305043*^9, 3.891097395877677*^9}, {3.8910974850903473`*^9, 
+  3.891097486253567*^9}, {3.891342431468978*^9, 3.891342437115471*^9}, {
+  3.891342492628126*^9, 3.891342506723246*^9}, {3.891352940896792*^9, 
+  3.891352946886242*^9}, {3.89135810453014*^9, 3.891358104733208*^9}, {
+  3.891618839869599*^9, 3.891618839935196*^9}, {3.8916976546065054`*^9, 
+  3.8916976547590647`*^9}, {3.89196302147346*^9, 3.89196302151943*^9}, {
+  3.8920335832763543`*^9, 
+  3.8920335971758933`*^9}},ExpressionUUID->"88f83ad4-f298-4486-b8bf-\
+cfd9f8791fd5"],
+
+Cell["\<\
+The distance transform results in a radial dimension. Write \
+\[OpenCurlyDoubleQuote]yes\[CloseCurlyDoubleQuote]  if you wich to multiply \
+all the data by 2 to approximate a full width measurement. Otherwise write \
+\[OpenCurlyDoubleQuote]no\[CloseCurlyDoubleQuote]. This parameter affects the \
+valsscaled variable.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+   3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+   3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+   3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+   3.8914339180665665`*^9, 3.89143399583138*^9}, {3.891434233495405*^9, 
+   3.8914342548537197`*^9}, {3.8914369970169835`*^9, 
+   3.8914370675628586`*^9}, {3.891437099048087*^9, 3.8914371260774145`*^9}, {
+   3.891437236069763*^9, 3.891437264481409*^9}, {3.891438208391657*^9, 
+   3.891438226760687*^9}, 
+   3.948371992538195*^9},ExpressionUUID->"3ea552e3-a54d-4475-885c-\
+c89afab5c315"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"multbytwo", "=", "\"\<yes\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.891437040196059*^9, 3.891437047942895*^9}, {
+  3.891962057597129*^9, 3.891962058562022*^9}, {3.891962703644048*^9, 
+  3.891962704711526*^9}, {3.896789115098354*^9, 3.896789116012381*^9}, {
+  3.896870694519604*^9, 3.896870695396243*^9}, {3.896875639921417*^9, 
+  3.896875640905288*^9}, {3.896888418879688*^9, 3.896888419951958*^9}, {
+  3.901813014571291*^9, 3.901813015164587*^9}, {3.901813068140959*^9, 
+  3.901813069079032*^9}, {3.901813619123919*^9, 3.9018136198765154`*^9}},
+ CellLabel->"In[61]:=",ExpressionUUID->"80442526-9d8c-402c-879f-4ff4a74ee46c"],
+
+Cell["\<\
+Select the data set to use for the statistical analysis . Write \"all\" to \
+use all the skeleton points in the statistical analysis (unrefined data). \
+Otherwise write \"refined\" to use the skeleton points leftover after \
+skeleton refining .\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+  3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+  3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+  3.891353037543734*^9, 3.891353096236174*^9}, {3.891357933163205*^9, 
+  3.8913579902468567`*^9}, {3.8916189468019233`*^9, 3.891619034638094*^9}, {
+  3.891697561665479*^9, 3.89169758444337*^9}, {3.89169798257327*^9, 
+  3.891697986441227*^9}, {3.891963037828109*^9, 3.891963039669712*^9}, {
+  3.8919630711491303`*^9, 3.891963101727461*^9}, {3.892033627667378*^9, 
+  3.8920337852335725`*^9}, {3.8958373737865143`*^9, 3.8958373815613866`*^9}, {
+  3.9479539190051937`*^9, 3.9479539356301117`*^9}, {3.948372022795561*^9, 
+  3.9483720382835255`*^9}},ExpressionUUID->"97363e91-b478-4dc5-8370-\
+14dbeb493069"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"activedata", "=", "\"\<refined\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.8920343987818594`*^9, 3.892034402114482*^9}, {
+  3.8920447115467663`*^9, 3.892044715168149*^9}, {3.895837363959592*^9, 
+  3.895837365314181*^9}, {3.9406935167742214`*^9, 3.940693516980316*^9}, {
+  3.940693555190274*^9, 3.940693557634529*^9}, {3.947953939398878*^9, 
+  3.9479539402472057`*^9}, {3.948282875966156*^9, 3.948282876185951*^9}, {
+  3.948282937264778*^9, 3.948282939520222*^9}},
+ CellLabel->"In[62]:=",ExpressionUUID->"18aab728-9c3a-4aa5-9b32-e3fdb5606bdb"],
+
+Cell["\<\
+If you wish to organize the data into groups enter a list with the multiple \
+group names. Otherwise enter a list with just one group name.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+  3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+  3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+  3.891353037543734*^9, 3.891353096236174*^9}, {3.891357933163205*^9, 
+  3.8913579902468567`*^9}, {3.8916189468019233`*^9, 3.891619034638094*^9}, {
+  3.891697561665479*^9, 3.89169758444337*^9}, {3.89169798257327*^9, 
+  3.891697986441227*^9}, {3.891963037828109*^9, 3.891963039669712*^9}, {
+  3.8919630711491303`*^9, 3.891963101727461*^9}, {3.892033627667378*^9, 
+  3.8920337852335725`*^9}, {3.892033905142338*^9, 
+  3.892033968887948*^9}},ExpressionUUID->"5fa1cdb0-784d-4660-854a-\
+5c0f1cfdf90e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"groupnames", "=", 
+   RowBox[{"{", "\"\<Group1\>\"", "}"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.9333520679343586`*^9, 3.9333520724202023`*^9}, {
+   3.933352158512894*^9, 3.9333521624794254`*^9}, {3.939997345161478*^9, 
+   3.9399973603267136`*^9}, {3.948210609860485*^9, 3.948210620943716*^9}, {
+   3.948293840405199*^9, 3.948293844503908*^9}, 3.94853782656729*^9, {
+   3.9645388316289043`*^9, 3.96453884052615*^9}, 3.965137418207356*^9},
+ CellLabel->"In[63]:=",ExpressionUUID->"62a9c4f1-3101-4538-857d-f8ab1c7f7530"],
+
+Cell["\<\
+Enter the successive lengths corresponding to the previous data groups. If \
+you do not wish to group the data enter a list with the total length of the \
+data.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891357933163205*^9, 
+   3.8913579902468567`*^9}, {3.8916189468019233`*^9, 3.891619034638094*^9}, {
+   3.891697561665479*^9, 3.89169758444337*^9}, {3.89169798257327*^9, 
+   3.891697986441227*^9}, {3.891963037828109*^9, 3.891963039669712*^9}, {
+   3.8919630711491303`*^9, 3.891963101727461*^9}, {3.892033627667378*^9, 
+   3.8920337852335725`*^9}, {3.892033905142338*^9, 3.892033968887948*^9}, {
+   3.8920342640846176`*^9, 3.892034286681238*^9}, 3.892568374116438*^9, {
+   3.9483720604147797`*^9, 
+   3.948372092001156*^9}},ExpressionUUID->"3dc35682-7881-46a9-bc70-\
+f431dbe0b886"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"grouplengths", "=", 
+   RowBox[{"{", "2", "}"}]}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.892034289628502*^9, 3.892034294211529*^9}, 
+   3.9333359784130898`*^9, {3.93999664013604*^9, 3.93999664437404*^9}, {
+   3.93999736242149*^9, 3.939997363205038*^9}, {3.948210626357775*^9, 
+   3.9482106281602783`*^9}, {3.948286262804705*^9, 3.948286264091345*^9}, {
+   3.94829384769442*^9, 3.948293850834143*^9}, {3.948537829816498*^9, 
+   3.948537831316153*^9}, {3.965137420775202*^9, 3.965137420916769*^9}, {
+   3.974912060087906*^9, 3.974912060228506*^9}},
+ CellLabel->"In[64]:=",ExpressionUUID->"18a6b464-c3d7-42d3-bc2e-2c697d0b95f4"],
+
+Cell["\<\
+Enter \[OpenCurlyDoubleQuote]no\[CloseCurlyDoubleQuote] if you wish to do \
+statistical analysis of each image individually within a group. Otherwise \
+enter \[OpenCurlyDoubleQuote]yes\[CloseCurlyDoubleQuote] to analyze the \
+agglomeration of all images in each group.\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891357933163205*^9, 
+   3.8913579902468567`*^9}, {3.8916189468019233`*^9, 3.891619034638094*^9}, {
+   3.891697561665479*^9, 3.89169758444337*^9}, {3.89169798257327*^9, 
+   3.891697986441227*^9}, {3.891963037828109*^9, 3.891963039669712*^9}, {
+   3.8919630711491303`*^9, 3.891963101727461*^9}, {3.892033627667378*^9, 
+   3.8920337852335725`*^9}, {3.892033905142338*^9, 3.892033968887948*^9}, {
+   3.8920342640846176`*^9, 3.892034286681238*^9}, 3.892568374116438*^9, {
+   3.9482110258634796`*^9, 3.9482111382766495`*^9}, {3.948372124558008*^9, 
+   3.948372138478474*^9}},ExpressionUUID->"1032def5-6261-be49-8638-\
+18ccb4bc78b6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"joingroups", "=", "\"\<yes\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.948210985304676*^9, 3.948211009270077*^9}, {
+   3.948211142844398*^9, 3.948211143287518*^9}, 3.948211295771534*^9, {
+   3.948276925417869*^9, 3.9482769262635326`*^9}, {3.9482829032262*^9, 
+   3.9482829033364983`*^9}, {3.948289362780112*^9, 3.948289363062956*^9}, {
+   3.948289793657107*^9, 3.948289793766926*^9}, {3.9751568369025707`*^9, 
+   3.9751568378086414`*^9}},
+ CellLabel->
+  "In[170]:=",ExpressionUUID->"9d376aa2-fa0b-1e4d-ad20-6faa05012a74"],
+
+Cell["\<\
+Enter \[OpenCurlyDoubleQuote]no\[CloseCurlyDoubleQuote] if you wish to use \
+all refined skeleton points for statistical analysis. Otherwise enter \
+\[OpenCurlyDoubleQuote]yes\[CloseCurlyDoubleQuote] to only use the mean of \
+each refined skeleton segment for statistical analysis (only one value, the \
+mean width, per skeleton segment). \
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+   3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+   3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+   3.891353037543734*^9, 3.891353096236174*^9}, {3.891357933163205*^9, 
+   3.8913579902468567`*^9}, {3.8916189468019233`*^9, 3.891619034638094*^9}, {
+   3.891697561665479*^9, 3.89169758444337*^9}, {3.89169798257327*^9, 
+   3.891697986441227*^9}, {3.891963037828109*^9, 3.891963039669712*^9}, {
+   3.8919630711491303`*^9, 3.891963101727461*^9}, {3.892033627667378*^9, 
+   3.8920337852335725`*^9}, {3.892033905142338*^9, 3.892033968887948*^9}, {
+   3.8920342640846176`*^9, 3.892034286681238*^9}, 3.892568374116438*^9, {
+   3.9482110258634796`*^9, 3.9482111382766495`*^9}, {3.9482112092385426`*^9, 
+   3.948211283646433*^9}, {3.948276829884426*^9, 3.948276830699589*^9}, {
+   3.948372180251203*^9, 
+   3.948372242540125*^9}},ExpressionUUID->"67dd70ff-e76b-e745-b62a-\
+08d647a09ad3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"meansklwidth", "=", "\"\<no\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.948211150273924*^9, 3.948211168075138*^9}, 
+   3.948211298039732*^9, {3.9482768102139587`*^9, 3.948276815935196*^9}, {
+   3.9482769285119514`*^9, 3.948276929417755*^9}, {3.9482770101122913`*^9, 
+   3.9482770108711815`*^9}, {3.948282909038263*^9, 3.948282910419603*^9}, {
+   3.948289768712605*^9, 3.9482897697181225`*^9}, {3.948289838740893*^9, 
+   3.9482898400131607`*^9}},
+ CellLabel->"In[66]:=",ExpressionUUID->"c4990cf2-88ad-cc4e-a990-8191520e5422"],
+
+Cell["Image display size for statistical graphics.", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.947935120585165*^9, 3.947935120964474*^9}, {
+  3.947945562682059*^9, 3.9479455709055996`*^9}, {3.948276810917042*^9, 
+  3.948276811203272*^9}},ExpressionUUID->"c8496395-a0fc-ae47-94f1-\
+30264ed6058c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"imgsize3", "=", "500"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{
+  3.947945443171339*^9, {3.947945574437392*^9, 3.9479455765567684`*^9}, 
+   3.947954161609*^9, {3.9482106311327705`*^9, 3.948210631527092*^9}, {
+   3.948538650233621*^9, 3.948538650327317*^9}},
+ CellLabel->"In[67]:=",ExpressionUUID->"6bc2da4a-b370-d24d-9bb7-e24c6a4c11b3"],
+
+Cell["Input a bin size for the histogram.", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+  3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+  3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+  3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+  3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+  3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+  3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+  3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+  3.891443126529173*^9}, {3.89228574388584*^9, 
+  3.892285745135558*^9}},ExpressionUUID->"9c2c2362-322d-418c-bcac-\
+d2aca8bf196c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"binsize1", "=", "0.17"}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.892202988356934*^9, 3.892202994532385*^9}, {
+   3.892203379397206*^9, 3.892203379459853*^9}, {3.9023104295774117`*^9, 
+   3.902310429648987*^9}, 3.94853860909807*^9, 3.951821159116146*^9, 
+   3.965138014113594*^9, {3.974992384786024*^9, 3.974992449285103*^9}},
+ CellLabel->"In[68]:=",ExpressionUUID->"65772c85-4f61-4be2-9b0e-e98de33f6076"],
+
+Cell["\<\
+Input histogram plot range. The format is a list of the form \
+{{xmin,xmax},{ymin,ymax}}. Here x represents the width range and y the \
+probability. Alternatively you can write Automatic or All as inputs to the \
+list. \
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+  3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+  3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+  3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+  3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+  3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+  3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+  3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+  3.891443126529173*^9}, {3.89228574388584*^9, 3.892285745135558*^9}, {
+  3.89228583214121*^9, 3.8922859670373964`*^9}, {3.9479553654543514`*^9, 
+  3.947955374834339*^9}, {3.9479554076781273`*^9, 
+  3.947955459400524*^9}},ExpressionUUID->"6de44139-78ab-4d16-a6ba-\
+87bdc0fb6f41"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"histpltrange", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "3.5"}], "}"}], ",", "Automatic"}], "}"}]}], 
+  ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.89228578445022*^9, 3.892285815984087*^9}, {
+   3.892286011788461*^9, 3.892286029149446*^9}, {3.902310478359434*^9, 
+   3.902310478408702*^9}, 3.933352182013916*^9, {3.948537840829556*^9, 
+   3.948537844078799*^9}, {3.9651379882844296`*^9, 3.9651379986256256`*^9}, {
+   3.966531196126366*^9, 3.966531205973723*^9}, {3.974992347886059*^9, 
+   3.9749923540235405`*^9}, {3.974992397827879*^9, 3.9749923981929073`*^9}, {
+   3.975156865382492*^9, 3.9751568655076904`*^9}},
+ CellLabel->
+  "In[176]:=",ExpressionUUID->"41ac629f-cf90-45d0-bb1d-c7b6f3b798ec"],
+
+Cell["\<\
+Input scaling type for the box-whisker chart. Possible entries are \
+\[OpenCurlyDoubleQuote]Linear\[CloseCurlyDoubleQuote]  and  \
+\[CloseCurlyDoubleQuote]Log10\[CloseCurlyDoubleQuote].\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->{{3.891342718104278*^9, 3.891342725635096*^9}, {
+  3.891344066269309*^9, 3.891344121818174*^9}, {3.8913450513029404`*^9, 
+  3.891345051383315*^9}, {3.891345519029659*^9, 3.891345529541765*^9}, {
+  3.891353037543734*^9, 3.891353096236174*^9}, {3.891353202392557*^9, 
+  3.8913532121357117`*^9}, {3.891353340792469*^9, 3.891353387355007*^9}, {
+  3.8914235387263985`*^9, 3.891423649693759*^9}, {3.891430234494768*^9, 
+  3.891430418056469*^9}, {3.89143331461359*^9, 3.891433353420579*^9}, {
+  3.8914339180665665`*^9, 3.891433941841221*^9}, {3.891443057381935*^9, 
+  3.891443126529173*^9}, {3.89228574388584*^9, 3.892285745135558*^9}, {
+  3.89228583214121*^9, 3.8922859670373964`*^9}, {3.89264785901489*^9, 
+  3.892647905080293*^9}, {3.892647983863158*^9, 
+  3.892647999466382*^9}},ExpressionUUID->"4eb7f795-01bf-463b-a048-\
+90cf6917e497"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"scaling", "=", "\"\<Linear\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.892647840362239*^9, 3.8926478505171504`*^9}, {
+  3.8929037706450305`*^9, 3.8929037715696106`*^9}, {3.965138052070273*^9, 
+  3.965138065115996*^9}},
+ CellLabel->"In[70]:=",ExpressionUUID->"bc39834e-3554-40b6-a423-475ecbc0e0f5"],
+
+Cell["\<\
+Select a file format to export the resulting width data. Possible formats \
+include \[OpenCurlyDoubleQuote]xlsx\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]csv\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]json\[CloseCurlyDoubleQuote],\[CloseCurlyDoubleQuote]\
+txt\[CloseCurlyDoubleQuote].\
+\>", "CodeText",
+ Editable->"False",
+ Deletable->"False",
+ Evaluatable->False,
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQAWIQbR92eL3qvzeOW4O2bADRevM8ItSAdLWeVTyI3rAx
+8zKIlnPJAdPfPz3gVQfSKmGG/CDaNW3jTi0gvbeP/SCIvtLvcw5EHwhvOQ+i
+X0TPvA+iLWKyn4LoFXbhar5A2s3YzAREq1z1zw4A0jPOOTaB6PZFwW8CgXRS
+qe5HEB2geMg8CEh7vN5lBaIvWOisCwPSf95d2Aaiz0b8Uf30/41jXZiKGog+
+3cJiCKKjjB46gujflQnfFjG8dTw8UekPiP437zfrYiA96807dhD9ROfn7d1V
+bx0fONs+B9EHbKa/BdMpPO9AtIdVzxcQvafj2VcQncHro7QXSGvMWQumAafw
+tD8=
+  "],ExpressionUUID->"3ac5523b-bede-1f48-a84f-de6211ae1ea6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"expformat", "=", "\"\<xlsx\>\""}], ";"}]], "Input",
+ Editable->True,
+ Deletable->False,
+ Evaluatable->True,
+ CellChangeTimes->{{3.892647840362239*^9, 3.8926478505171504`*^9}, {
+  3.8929037706450305`*^9, 3.8929037715696106`*^9}, {3.9566621969885*^9, 
+  3.956662208655218*^9}, {3.956664408016796*^9, 3.956664408425316*^9}, {
+  3.956664614799881*^9, 3.956664616260374*^9}, {3.956664713250196*^9, 
+  3.9566647151345863`*^9}, {3.95666491984464*^9, 3.956664954196779*^9}, {
+  3.956665139661007*^9, 3.956665141843942*^9}},
+ CellLabel->"In[71]:=",ExpressionUUID->"7a3afd7e-9858-7047-8724-5871b6b0f49a"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{574.8, 579.6},
+WindowMargins->{{Automatic, -4.7999999999999545`}, {Automatic, 0}},
+SpellingDictionaries->{"CorrectWords"->{
+ "diffractio", "pltrange", "ycoord", "txt", "deletepf", "editpf", "editiasi", 
+  "deleteias", "deleteiasi", "wich", "anglethreshold", "valsscaled", 
+  "usetrim", "originalimgs", "brnchtoremove", "modbc", "Udita", "pts", "skl", 
+  "locdisplay", "medoid", "filtbranchdispl", "xfrac", "yfrac", "sizefrac", 
+  "sstoremove", "labeledss"}},
+FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"8cae2786-7da4-4435-a246-6440cc0079e8"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 321, 7, 51, "Chapter",ExpressionUUID->"6560ff22-c7f4-4a91-ba29-640cb3faa494",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[926, 33, 516, 10, 50, "Section",ExpressionUUID->"4eac0837-7631-4b98-b37d-697cb611ba02",
+ Evaluatable->False],
+Cell[1445, 45, 520, 12, 46, "CodeText",ExpressionUUID->"6121c76e-3821-4a3b-b106-b74d87f97dc3",
+ Evaluatable->False],
+Cell[1968, 59, 1968, 39, 62, "Input",ExpressionUUID->"de03fcd6-b871-496d-a7ab-67f8d6327835",
+ Evaluatable->True,
+ InitializationCell->True]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[3985, 104, 573, 11, 44, "Chapter",ExpressionUUID->"dc0cb5e0-0561-47a1-a65e-0ec0dbe5438d",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[4583, 119, 308, 7, 41, "Subsection",ExpressionUUID->"979fe95e-392b-401a-ad63-6182fc073d55",
+ Evaluatable->False],
+Cell[4894, 128, 958, 17, 46, "CodeText",ExpressionUUID->"e1086a9c-cf4f-4b93-bd00-2a12fb1b3b3b",
+ Evaluatable->False],
+Cell[5855, 147, 963, 17, 36, "Input",ExpressionUUID->"1e07b56f-f136-47c4-9553-e87e17a30aad",
+ Evaluatable->True],
+Cell[6821, 166, 510, 11, 21, "Input",ExpressionUUID->"a7d911b3-eee9-4b2a-b2b8-948bba775620",
+ Evaluatable->True],
+Cell[7334, 179, 928, 23, 36, "Input",ExpressionUUID->"80292a23-779a-f84b-a39d-717d8d291723",
+ Evaluatable->True],
+Cell[8265, 204, 780, 19, 36, "Input",ExpressionUUID->"d3bf5f95-66b2-4f95-906b-ce0e209a9d3a",
+ Evaluatable->True],
+Cell[9048, 225, 2310, 38, 36, "Input",ExpressionUUID->"bbfa2081-a5a0-4abc-87e8-a9da942e85a4",
+ Evaluatable->True],
+Cell[11361, 265, 928, 21, 36, "Input",ExpressionUUID->"c4abfedf-58bb-4f4e-90fe-540e1c96c9c4",
+ Evaluatable->True],
+Cell[12292, 288, 1029, 22, 36, "Input",ExpressionUUID->"d7a60119-7683-4776-bfe0-95edf7cb4710",
+ Evaluatable->True],
+Cell[13324, 312, 783, 19, 36, "Input",ExpressionUUID->"10968b4b-72c4-45bb-a3b2-7b27f1200796",
+ Evaluatable->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[14144, 336, 247, 6, 30, "Subsection",ExpressionUUID->"2d366563-be9f-4a76-937b-02af69147d55",
+ Evaluatable->False],
+Cell[14394, 344, 377, 9, 21, "Input",ExpressionUUID->"099947f2-56a2-4b8f-a86c-70298459f5a3",
+ Evaluatable->True]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[14820, 359, 363, 8, 44, "Chapter",ExpressionUUID->"349a0422-87d8-4669-af67-e3b5c113851c",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[15208, 371, 485, 9, 50, "Section",ExpressionUUID->"118a075b-95b5-4ff4-9f02-43831627d5fc",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[15718, 384, 294, 7, 41, "Subsection",ExpressionUUID->"5fb1ee3e-4b8b-7c42-a865-091233898fe7",
+ Evaluatable->False],
+Cell[16015, 393, 1219, 21, 96, "CodeText",ExpressionUUID->"63c24fe3-7a55-6c48-b58a-0557b5a7980a",
+ Evaluatable->False],
+Cell[17237, 416, 563, 11, 21, "Input",ExpressionUUID->"58d7d9cc-f47e-104f-a521-0fd6cde04fa3",
+ Evaluatable->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17837, 432, 381, 8, 41, "Subsection",ExpressionUUID->"e8db1fe9-2ca7-4a86-83fc-fc29553764ec",
+ Evaluatable->False],
+Cell[18221, 442, 1056, 19, 79, "CodeText",ExpressionUUID->"2616ec1f-7dda-4771-8ec2-606f49e215fb",
+ Evaluatable->False],
+Cell[19280, 463, 652, 12, 21, "Input",ExpressionUUID->"79553676-6fcb-4c24-86c7-bfc89f25493f",
+ Evaluatable->True],
+Cell[19935, 477, 1324, 22, 130, "CodeText",ExpressionUUID->"e3d40188-cbc0-1745-bb25-70af8e12a88c",
+ Evaluatable->False],
+Cell[21262, 501, 1319, 31, 21, "Input",ExpressionUUID->"131ba927-4ef8-4169-b236-217990694fe4",
+ Evaluatable->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22630, 538, 503, 10, 50, "Section",ExpressionUUID->"ceecc5b5-ccd1-4e69-a82b-2f1df8fd3d4a",
+ Evaluatable->False],
+Cell[23136, 550, 1260, 21, 65, "CodeText",ExpressionUUID->"e9e77444-75e6-4b8d-badf-a95ac697192b",
+ Evaluatable->False],
+Cell[24399, 573, 1008, 18, 21, "Input",ExpressionUUID->"6b81cb5b-58f2-4ced-8eba-e7cf257c0230",
+ Evaluatable->True],
+Cell[25410, 593, 1304, 22, 81, "CodeText",ExpressionUUID->"b7d54fbe-994f-4db0-8554-3ba278ab91e4",
+ Evaluatable->False],
+Cell[26717, 617, 1409, 31, 21, "Input",ExpressionUUID->"2de678d0-fd93-4f74-bec6-e54a9ef8559d",
+ Evaluatable->True],
+Cell[28129, 650, 1440, 24, 81, "CodeText",ExpressionUUID->"126b23bf-a7fa-47e8-9812-6c304ae989d4",
+ Evaluatable->False],
+Cell[29572, 676, 714, 15, 21, "Input",ExpressionUUID->"70a348d9-350d-4816-9128-d2e935b9960e",
+ Evaluatable->True],
+Cell[30289, 693, 1546, 25, 65, "CodeText",ExpressionUUID->"55f252da-f311-4396-9316-e99fc2619ac2",
+ Evaluatable->False],
+Cell[31838, 720, 574, 12, 21, "Input",ExpressionUUID->"7c1149c6-5199-46bb-9b52-9b31a021d026",
+ Evaluatable->True],
+Cell[32415, 734, 1367, 22, 31, "CodeText",ExpressionUUID->"190edb1e-272b-f941-8439-b326b13ba14d",
+ Evaluatable->False],
+Cell[33785, 758, 1067, 27, 21, "Input",ExpressionUUID->"f5c4c744-5f40-a74a-aeaa-70dc271db87e",
+ Evaluatable->True],
+Cell[34855, 787, 1409, 23, 48, "CodeText",ExpressionUUID->"4992f9d9-5044-4022-992f-6d923d44372d",
+ Evaluatable->False],
+Cell[36267, 812, 1289, 22, 21, "Input",ExpressionUUID->"0a00244a-5888-4061-a960-4fa3510e5bd1",
+ Evaluatable->True],
+Cell[37559, 836, 1371, 22, 31, "CodeText",ExpressionUUID->"b007de6f-550c-4c5e-a636-23213902fc62",
+ Evaluatable->False],
+Cell[38933, 860, 386, 9, 21, "Input",ExpressionUUID->"4002b352-11b2-4bec-a8a1-9c2ec78cfdfe",
+ Evaluatable->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39356, 874, 464, 9, 50, "Section",ExpressionUUID->"96c9f08f-7971-4bec-9ec6-c0d5bf42fedc",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[39845, 887, 572, 11, 41, "Subsection",ExpressionUUID->"fb6fd939-471f-4b24-8e4c-3edfed2fee7e",
+ Evaluatable->False],
+Cell[40420, 900, 911, 17, 63, "CodeText",ExpressionUUID->"7198e94e-f634-40ed-bc94-96ce5f211c17",
+ Evaluatable->False],
+Cell[41334, 919, 341, 8, 21, "Input",ExpressionUUID->"3897733b-a26e-4766-a9c6-c9a7528fcb17",
+ Evaluatable->True],
+Cell[41678, 929, 1019, 18, 79, "CodeText",ExpressionUUID->"49ab3ef1-8046-40ce-bc10-dd0a13c8efa6",
+ Evaluatable->False],
+Cell[42700, 949, 2133, 35, 21, "Input",ExpressionUUID->"d3c91e36-420d-4924-bfb4-0ba9fc51ecf1",
+ Evaluatable->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44882, 990, 560, 11, 50, "Section",ExpressionUUID->"63629aec-1c7d-4b55-8abc-1729181db5a4",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[45467, 1005, 623, 11, 41, "Subsection",ExpressionUUID->"8b75063e-2877-4135-a3b7-d0e6db5c283f",
+ Evaluatable->False],
+Cell[46093, 1018, 802, 16, 29, "CodeText",ExpressionUUID->"a4fdbe46-c38d-4bbc-af7f-ccd93fb9ec36",
+ Evaluatable->False],
+Cell[46898, 1036, 522, 11, 21, "Input",ExpressionUUID->"9c587891-486c-4210-b568-82b6e53075b2",
+ Evaluatable->True],
+Cell[47423, 1049, 868, 17, 29, "CodeText",ExpressionUUID->"0ff76c2b-c93b-4931-b27a-7696ee670b37",
+ Evaluatable->False],
+Cell[48294, 1068, 575, 11, 21, "Input",ExpressionUUID->"5e4a1529-31fc-4e6b-8695-df1a1f054fd3",
+ Evaluatable->True],
+Cell[48872, 1081, 1043, 19, 46, "CodeText",ExpressionUUID->"b0d41f5f-fdee-4f47-bdb5-d1c50a5fe96f",
+ Evaluatable->False],
+Cell[49918, 1102, 275, 7, 21, "Input",ExpressionUUID->"fcec2242-65b6-40b6-ac2b-dc75ec040e40",
+ Evaluatable->True],
+Cell[50196, 1111, 435, 10, 63, "CodeText",ExpressionUUID->"b9a1664d-b997-6d47-a26b-eb37ecdc9815",
+ Evaluatable->False],
+Cell[50634, 1123, 319, 10, 21, "Input",ExpressionUUID->"46f2a31b-1c94-9f47-a2e2-9addaf5ddd3f",
+ Evaluatable->True],
+Cell[50956, 1135, 1305, 23, 63, "CodeText",ExpressionUUID->"bdbc9f1f-85d1-41d3-aeff-c232d2ba69f6",
+ Evaluatable->False],
+Cell[52264, 1160, 382, 9, 21, "Input",ExpressionUUID->"56addd0a-0c8b-429b-9f45-c9a1dc829589",
+ Evaluatable->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[52683, 1174, 662, 12, 30, "Subsection",ExpressionUUID->"d3e0094e-390d-d04f-943a-42b28d752253",
+ Evaluatable->False],
+Cell[53348, 1188, 271, 6, 29, "CodeText",ExpressionUUID->"d81d43a6-b1d0-c44e-95a1-2cc44e3de7dc",
+ Evaluatable->False],
+Cell[53622, 1196, 302, 8, 21, "Input",ExpressionUUID->"93f9115f-1336-1e48-866e-e3f3152d924a",
+ Evaluatable->True],
+Cell[53927, 1206, 1029, 18, 46, "CodeText",ExpressionUUID->"c1a62f36-c58c-49f4-9cef-19b1af3f84ac",
+ Evaluatable->False],
+Cell[54959, 1226, 431, 12, 21, "Input",ExpressionUUID->"cf3ee01c-0be8-45c7-90f7-9a9c5038e329",
+ Evaluatable->True],
+Cell[55393, 1240, 824, 15, 29, "CodeText",ExpressionUUID->"4775be33-4646-4ed2-967a-5949b49a2be9",
+ Evaluatable->False],
+Cell[56220, 1257, 300, 8, 21, "Input",ExpressionUUID->"a2f2408b-fe08-43d2-9c9f-d011efb84acb",
+ Evaluatable->True],
+Cell[56523, 1267, 1071, 19, 63, "CodeText",ExpressionUUID->"35a029ae-1a9c-47e4-8ecc-a64783199b70",
+ Evaluatable->False],
+Cell[57597, 1288, 372, 9, 21, "Input",ExpressionUUID->"c17c75d4-1a1b-491b-9599-5521a00ee373",
+ Evaluatable->True],
+Cell[57972, 1299, 1204, 21, 63, "CodeText",ExpressionUUID->"58ce45ed-184a-4e18-99d7-5dbd558fdd4f",
+ Evaluatable->False],
+Cell[59179, 1322, 336, 9, 21, "Input",ExpressionUUID->"d8841636-d347-42fd-b335-d50433fe3a1a",
+ Evaluatable->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[59552, 1336, 161, 3, 30, "Subsection",ExpressionUUID->"2e09802d-e06d-6b4b-8f00-18f8d78b9269",
+ Evaluatable->False],
+Cell[59716, 1341, 422, 10, 46, "CodeText",ExpressionUUID->"f7de7ba3-1277-5b41-8415-3954e39bf264",
+ Evaluatable->False],
+Cell[60141, 1353, 210, 6, 21, "Input",ExpressionUUID->"6c1f04a5-c63b-474f-816f-40ecca11cded",
+ Evaluatable->True],
+Cell[60354, 1361, 436, 10, 63, "CodeText",ExpressionUUID->"5fc67ff1-e62c-a445-a68d-fc32d958e6ac",
+ Evaluatable->False],
+Cell[60793, 1373, 487, 13, 21, "Input",ExpressionUUID->"cb43071e-d272-9f4b-93b7-8ad224cbf876",
+ Evaluatable->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[61329, 1392, 569, 11, 50, "Section",ExpressionUUID->"db6447fe-06e3-4e20-9402-0af48bc15f01",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[61923, 1407, 639, 11, 41, "Subsection",ExpressionUUID->"a6957136-3e44-4cc9-9acd-5d03155fcfe5",
+ Evaluatable->False],
+Cell[62565, 1420, 1279, 22, 63, "CodeText",ExpressionUUID->"cf548db9-27ec-49f4-a962-dcc476623aaf",
+ Evaluatable->False],
+Cell[63847, 1444, 450, 10, 21, "Input",ExpressionUUID->"46e526a6-a9c8-4e1c-80a5-f475a49eda05",
+ Evaluatable->True],
+Cell[64300, 1456, 324, 7, 46, "CodeText",ExpressionUUID->"c8edc42d-f854-144d-82a2-d5f172f5f1fe",
+ Evaluatable->False],
+Cell[64627, 1465, 428, 9, 21, "Input",ExpressionUUID->"ed554563-4a19-3d4b-abcf-2852d8d0b6c8",
+ Evaluatable->True],
+Cell[65058, 1476, 1558, 25, 79, "CodeText",ExpressionUUID->"dccfd7fb-b83f-4b5e-892f-f6ce0e16d621",
+ Evaluatable->False],
+Cell[66619, 1503, 969, 17, 21, "Input",ExpressionUUID->"e4281288-7086-4a5d-a7f8-434ec4e8d9f3",
+ Evaluatable->True],
+Cell[67591, 1522, 1369, 23, 46, "CodeText",ExpressionUUID->"caf92f2a-84ff-0c48-a856-22bcecb574b3",
+ Evaluatable->False],
+Cell[68963, 1547, 363, 8, 21, "Input",ExpressionUUID->"a22d0f4b-c0c9-a041-bf74-e9ab932dce10",
+ Evaluatable->True],
+Cell[69329, 1557, 1357, 23, 46, "CodeText",ExpressionUUID->"688559b9-416c-ed4a-8fbf-24f951e59977",
+ Evaluatable->False],
+Cell[70689, 1582, 547, 11, 21, "Input",ExpressionUUID->"7e4ada5b-e7c6-aa48-9e75-dfa3558166fe",
+ Evaluatable->True],
+Cell[71239, 1595, 280, 6, 46, "CodeText",ExpressionUUID->"23017f17-5062-9042-992e-8ef374979d18",
+ Evaluatable->False],
+Cell[71522, 1603, 399, 9, 21, "Input",ExpressionUUID->"5bdc9f35-e5e9-1749-ad77-6112b31895d0",
+ Evaluatable->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[71958, 1617, 691, 12, 41, "Subsection",ExpressionUUID->"944e29c0-37b2-734a-ab13-4b72a300cace",
+ Evaluatable->False],
+Cell[72652, 1631, 1442, 24, 46, "CodeText",ExpressionUUID->"76a04de1-387b-c54b-8dec-1b7baf068cee",
+ Evaluatable->False],
+Cell[74097, 1657, 647, 12, 21, "Input",ExpressionUUID->"a1105877-7d98-2346-b431-d2babda3442f",
+ Evaluatable->True],
+Cell[74747, 1671, 193, 3, 29, "CodeText",ExpressionUUID->"7b5a2e90-3eda-ce42-aa72-6ef1e0239a66",
+ Evaluatable->False],
+Cell[74943, 1676, 432, 12, 21, "Input",ExpressionUUID->"9bc72273-0c95-3e4f-8494-9ca47e3a2ec6",
+ Evaluatable->True],
+Cell[75378, 1690, 1472, 22, 29, "CodeText",ExpressionUUID->"625ccf99-b3b3-d842-8947-975e18e46c4d",
+ Evaluatable->False],
+Cell[76853, 1714, 435, 12, 21, "Input",ExpressionUUID->"03b719d6-540e-064f-a854-28d96afb2582",
+ Evaluatable->True],
+Cell[77291, 1728, 1545, 25, 46, "CodeText",ExpressionUUID->"36ca543a-cc3f-4c47-bead-95ada35db152",
+ Evaluatable->False],
+Cell[78839, 1755, 279, 7, 21, "Input",ExpressionUUID->"36c7d920-d6fa-1647-8b42-e8166a3e9d8b",
+ Evaluatable->True],
+Cell[79121, 1764, 248, 6, 29, "CodeText",ExpressionUUID->"f653dfda-febc-8e41-9907-90f0936b1592",
+ Evaluatable->False],
+Cell[79372, 1772, 584, 13, 21, "Input",ExpressionUUID->"36277135-9ca6-9546-a5f1-ed1e108b4593",
+ Evaluatable->True],
+Cell[79959, 1787, 1346, 22, 29, "CodeText",ExpressionUUID->"8d6043fb-6c5d-48ea-92f7-532819abbce3",
+ Evaluatable->False],
+Cell[81308, 1811, 529, 11, 21, "Input",ExpressionUUID->"ab919906-55aa-4a25-a9b0-1a715b8308b9",
+ Evaluatable->True],
+Cell[81840, 1824, 1564, 25, 29, "CodeText",ExpressionUUID->"0a0ccac8-6b63-6a4a-8ad9-0f7a7a7e48f2",
+ Evaluatable->False],
+Cell[83407, 1851, 334, 8, 21, "Input",ExpressionUUID->"bb471f1c-2879-e141-9bf0-f35383d9e1b4",
+ Evaluatable->True],
+Cell[83744, 1861, 871, 18, 46, "CodeText",ExpressionUUID->"575897b5-ed0e-432c-8830-36cbac8d9531",
+ Evaluatable->False],
+Cell[84618, 1881, 294, 7, 21, "Input",ExpressionUUID->"c5fed018-9d13-4230-9be7-fa31678d9016",
+ Evaluatable->True],
+Cell[84915, 1890, 1651, 26, 29, "CodeText",ExpressionUUID->"ae567fac-5dc4-694c-b5ed-810ea9d5b5f5",
+ Evaluatable->False],
+Cell[86569, 1918, 276, 7, 21, "Input",ExpressionUUID->"4caddc4b-161e-f048-8136-7648660cfb53",
+ Evaluatable->True],
+Cell[86848, 1927, 1761, 28, 46, "CodeText",ExpressionUUID->"c80e8764-18ea-1849-a587-047d449f8c61",
+ Evaluatable->False],
+Cell[88612, 1957, 312, 8, 21, "Input",ExpressionUUID->"25a018e6-b3b8-3048-95a5-11ce57d10a90",
+ Evaluatable->True],
+Cell[88927, 1967, 2078, 32, 130, "CodeText",ExpressionUUID->"7f1dd054-bceb-4d81-8d67-aebf82fccb0f",
+ Evaluatable->False],
+Cell[91008, 2001, 1780, 30, 21, "Input",ExpressionUUID->"e91b0ce6-3fac-4679-9e4c-5403bf849618",
+ Evaluatable->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[92837, 2037, 517, 10, 50, "Section",ExpressionUUID->"e2a5bada-5be3-4a85-914d-51a7eadf6ec4",
+ Evaluatable->False],
+Cell[CellGroupData[{
+Cell[93379, 2051, 712, 13, 41, "Subsection",ExpressionUUID->"88f83ad4-f298-4486-b8bf-cfd9f8791fd5",
+ Evaluatable->False],
+Cell[94094, 2066, 1304, 23, 63, "CodeText",ExpressionUUID->"3ea552e3-a54d-4475-885c-c89afab5c315",
+ Evaluatable->False],
+Cell[95401, 2091, 720, 13, 21, "Input",ExpressionUUID->"80442526-9d8c-402c-879f-4ff4a74ee46c",
+ Evaluatable->True],
+Cell[96124, 2106, 1149, 20, 63, "CodeText",ExpressionUUID->"97363e91-b478-4dc5-8370-14dbeb493069",
+ Evaluatable->False],
+Cell[97276, 2128, 636, 12, 21, "Input",ExpressionUUID->"18aab728-9c3a-4aa5-9b32-e3fdb5606bdb",
+ Evaluatable->True],
+Cell[97915, 2142, 939, 17, 46, "CodeText",ExpressionUUID->"5fa1cdb0-784d-4660-854a-5c0f1cfdf90e",
+ Evaluatable->False],
+Cell[98857, 2161, 612, 12, 21, "Input",ExpressionUUID->"62a9c4f1-3101-4538-857d-f8ab1c7f7530",
+ Evaluatable->True],
+Cell[99472, 2175, 1095, 20, 46, "CodeText",ExpressionUUID->"3dc35682-7881-46a9-bc70-f431dbe0b886",
+ Evaluatable->False],
+Cell[100570, 2197, 717, 14, 21, "Input",ExpressionUUID->"18a6b464-c3d7-42d3-bc2e-2c697d0b95f4",
+ Evaluatable->True],
+Cell[101290, 2213, 1251, 21, 46, "CodeText",ExpressionUUID->"1032def5-6261-be49-8638-18ccb4bc78b6",
+ Evaluatable->False],
+Cell[102544, 2236, 615, 13, 21, "Input",ExpressionUUID->"9d376aa2-fa0b-1e4d-ad20-6faa05012a74",
+ Evaluatable->True],
+Cell[103162, 2251, 1424, 24, 63, "CodeText",ExpressionUUID->"67dd70ff-e76b-e745-b62a-08d647a09ad3",
+ Evaluatable->False],
+Cell[104589, 2277, 618, 12, 21, "Input",ExpressionUUID->"c4990cf2-88ad-cc4e-a990-8191520e5422",
+ Evaluatable->True],
+Cell[105210, 2291, 349, 7, 29, "CodeText",ExpressionUUID->"c8496395-a0fc-ae47-94f1-30264ed6058c",
+ Evaluatable->False],
+Cell[105562, 2300, 425, 10, 21, "Input",ExpressionUUID->"6bc2da4a-b370-d24d-9bb7-e24c6a4c11b3",
+ Evaluatable->True],
+Cell[105990, 2312, 825, 14, 29, "CodeText",ExpressionUUID->"9c2c2362-322d-418c-bcac-d2aca8bf196c",
+ Evaluatable->False],
+Cell[106818, 2328, 495, 10, 21, "Input",ExpressionUUID->"65772c85-4f61-4be2-9b0e-e98de33f6076",
+ Evaluatable->True],
+Cell[107316, 2340, 1166, 21, 63, "CodeText",ExpressionUUID->"6de44139-78ab-4d16-a6ba-87bdc0fb6f41",
+ Evaluatable->False],
+Cell[108485, 2363, 821, 19, 21, "Input",ExpressionUUID->"41ac629f-cf90-45d0-bb1d-c7b6f3b798ec",
+ Evaluatable->True],
+Cell[109309, 2384, 1127, 20, 29, "CodeText",ExpressionUUID->"4eb7f795-01bf-463b-a048-90cf6917e497",
+ Evaluatable->False],
+Cell[110439, 2406, 391, 9, 21, "Input",ExpressionUUID->"bc39834e-3554-40b6-a423-475ecbc0e0f5",
+ Evaluatable->True],
+Cell[110833, 2417, 858, 18, 46, "CodeText",ExpressionUUID->"3ac5523b-bede-1f48-a84f-de6211ae1ea6",
+ Evaluatable->False],
+Cell[111694, 2437, 629, 12, 21, "Input",ExpressionUUID->"7a3afd7e-9858-7047-8724-5871b6b0f49a",
+ Evaluatable->True]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
