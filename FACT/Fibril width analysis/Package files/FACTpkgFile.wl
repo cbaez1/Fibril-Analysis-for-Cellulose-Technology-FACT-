@@ -17,8 +17,8 @@ tableDisplay2::usage="tableDisplay2[data_List]\n Prints a table that shows the p
 each image.";
 tableDisplay3::usage="tableDisplay3[filenames_, data_List]\n Prints a table showing the number of branch points 
 in each skeleton image.";
-tableDisplay4::usage="tableDisplay4[filenames_, data_List,ssdata_List]\n Prints a table showing number of junction 
-points and total skeleton segment count";
+tableDisplay4::usage=" tableDisplay4[filenames_, jp_List, jpref_, ssrefdata_List, ssorigdata_List]\n Prints a table 
+showing number of junction points and total skeleton segment count";
 imgDisplay1::usage="imgDisplay1[image_List, size_, ar_]\n dynamic display of images";
 formatForExp::usage="formatForExp[data_List, filenames_List]\n formats the width data to export as an excel file";
 expToExcel::usage="expToExcel[data_List, filenames_List]\n This version corrects the errors of fromatForExp.";
@@ -243,12 +243,11 @@ tableDisplay3[filenames_, data_List] := TableForm[Thread[{FileBaseName
    {None, {"File names", "Number of junction points"}}, TableAlignments ->
    Left]
    
-   tableDisplay4[filenames_, jp_List, jpref_, ssdata_List] :=  TableForm[Thread[{FileBaseName
-   /@ filenames, Map[If[Length[#]>0, Keys @ Last[#], 0]&, jp], Length/@jpref ,Map[Length,ssdata],
-   Map[Length@Flatten[#[[All,3]],1]&,ssdata],Map[Total[#[[All,1]]]&,ssdata]}], TableHeadings ->
-   {Range[Length[filenames]], {"File names", "# jp original","# jp ref","# Skl segments",
-   "Skl counts (Resampled)", "Skl counts"}}, 
-   TableAlignments -> Left]
+tableDisplay4[filenames_, jp_List, jpref_, ssrefdata_List, ssorigdata_List] :=  TableForm[
+Thread[{FileBaseName /@ filenames, Map[If[Length[#]>0, Keys @ Last[#], 0]&, jp],Length/@jpref, Length/@ssorigdata,
+   Map[Length,ssrefdata],Map[Total[#[[All,1]]]&,ssrefdata], Map[Length@Flatten[#[[All,3]],1]&,ssrefdata]}],
+    TableHeadings ->{Range[Length[filenames]], {"File names", "# jp orig","# jp ref","# Skl seg orig",
+    "# Skl seg ref", "Skl counts", "Skl counts (Resampled)"}}, TableAlignments -> Left]
 
 imgDisplay1[image_List, size_, ar_] := If[Head[image[[1]]] === Image,
   Manipulate[Show[image[[i]], ImageSize -> size, AspectRatio-> ar], {i, 1, Length[image
@@ -974,7 +973,7 @@ modlist1=MapThread[formatDat2[#1,#2]&,{list1,outfrac},1];
 ]
 
 printStats[data_,type_,groupnames_,sigdigit_]:=If[type==="no",
-TableForm[Map[NumberForm[#,{4,sigdigit}]&,Transpose/@data[[2]],{3}],TableDirections->Column,TableAlignments->{Center,Center},TableHeadings->{data[[1]],{"Images","Mean","Skewness","1st Quartile","Median","3rd Quartile","StdDev","Count","Outliers(%)"}}],TableForm[Map[NumberForm[#,{3,2}]&,data,{2}],
+TableForm[Map[NumberForm[#,{4,sigdigit}]&,Transpose/@data[[2]],{3}],TableDirections->Column,TableAlignments->{Center,Center},TableHeadings->{data[[1]],{"Name","Mean","Skewness","1st Quartile","Median","3rd Quartile","StdDev","Count","Outliers(%)"}}],TableForm[Map[NumberForm[#,{3,2}]&,data,{2}],
 TableAlignments->Center,TableHeadings->{groupnames,{"Mean","Skewness","1st Quartile","Median","3rd Quartile","StdDev","Count","Outliers(%)"}}]
 ]
 
