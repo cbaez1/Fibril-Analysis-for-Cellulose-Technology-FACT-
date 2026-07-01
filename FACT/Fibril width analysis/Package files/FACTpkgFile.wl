@@ -20,13 +20,18 @@ in each skeleton image.";
 tableDisplay4::usage=" tableDisplay4[filenames_, jp_List, jpref_, ssrefdata_List, ssorigdata_List]\n Prints a table 
 showing number of junction points and total skeleton segment count";
 imgDisplay1::usage="imgDisplay1[image_List, size_, ar_]\n dynamic display of images";
-formatForExp::usage="formatForExp[data_List, filenames_List]\n formats the width data to export as an excel file";
-expToExcel::usage="expToExcel[data_List, filenames_List]\n This version corrects the errors of fromatForExp.";
+expToExcel::usage="expToExcel[data_List, filenames_List]\n Formats data for exporting to excel.";
 exportFunc::usage="exportFunc[dir_,name_,data_]\n exports data as one file";
 expMult::usage="expMultiple[dir_String, name_List, ext_String, data_List]\n exports data as multiple files";
 exportAll::usage="exportAll[datapath_,fnoriginal_,datafn_,kernsize_,mincount_,minelongation_,dropfrac_,
 anglethreshold_,ssmincount_,widthdata_,widthmeandat_,refwidthdata_,refwidthmeandat_,expformat_]\n Applies correct export function 
 based on expformat input.";
+exportPT::usage="exportPT[datapath_,datafn_,ptdisplay_,expformat_]\n Exports the parameter table.";
+checkF::usage="checkF[input_,newinput_,i_]\n Checks whether the current table cell is empty. If empty it 
+assigns the previous value.";
+autoFill::usage="autoFill[input_List]\n Applies checkF to autofill the empty table cells.";
+extrFuncV2::usage="extrFuncV2[paramtab_List]\n Applies autoFill to the parameter table";
+extrFuncDisplay::usage="extrFuncDisplay[paramtab_List]\n Applies autoFill to the parameter table (display version)";
 normalizingFunc::usage="normalizingFunc[images_List]\n takes a list of images and normalizes them so that 
 all values all lie within 0 and 1.";
 thresholdFunc::usage="thresholdFunc[images_List, threshval_List]\n thresholds and binarizes gray images.";
@@ -113,12 +118,8 @@ loctype_,sklptsize_,locptsize_,circle_String]\n Outputs an overlay of the origin
 location of point of interets in branch, a line between the location of the point of interest and its neareast background pixel, 
 and the user can select to also overlay an enclosing circle with center in point of interest and radius equal to the eucledian disatance
 between the point of interest and its nearest background pixel";
-scaleBarV1::usage="scaleBar[img_,xfrac_,len_,yfrac_,res_,size_,color_,ynumpos_,fontsize_Integer,linethick_,unit_String]\n Adds a 
-scale bar to the graphic based on absolute scale bar size in um. (This version does not work)";
-scaleBarV2::usage="scaleBarV2[img_,xfrac_,yfrac_,lenfrac_,imgdim_List,pixsize_,color_,ynumpos_,fontsize_Integer,linethick_,unit_String]\n 
-Adds a scale bar to the graphic based on fraction of scale bar length. (This version has issues)";
-scaleBarV3::usage="scaleBarV3[img_,xfrac_,yfrac_,lenfrac_,imgdim_List,pixsize_,color_,ynumpos_,fontsize_Integer,linethick_,unit_String]\n 
-This version seems to have fixed the scale bar issue.";
+scaleBar::usage="scaleBar[img_,xfrac_,yfrac_,len_,imgdim_List,pixsize_,color_,ynumpos_,fontsize_Integer,linethick_,unit_String,
+printunit_String]\n This version seems to have fixed the scale bar issue.";
 resampleFunc::usage="resampleFunc[dat_List,max_Integer]\n This sample is used to reduce the sampling rate of the skeleton segments
 before using it in the color maps.";
 widthColorMap::usage="widthColorMap[img_,skldat_,scale_,multby2_,colscheme_,max_,units_String,multfactor_,colmaprange_,ptsize_,
@@ -128,6 +129,8 @@ sklcolor_,JPcolor_]\n Displays a graphic highlighting the skeleton branches and 
 downSamp::usage="downSamp[data_,partlen_]\n This function downsamples the number of points per skeleton segment. Use this 
 when the number of points is too large to rasterize. Input an integer greater than 1 to lower the number of points per segment
 proportional to that number.";
+meanDTcolMap::usage="meanDTcolMap[img_,skldat_,dtangle_,scale_,multby2_,colscheme_,multfactor_,colmaprange_,ptsize_,
+legendscale_,lengendnumscale_]\n Color map to visualize the mean distance transform angle of each skeleton segment.";
 mapMonitorV1::usage="mapMonitorV1[func_,binimgs_List]\n A version of MapIndexed that outputs a progress bar as it evaluates
 the input list.";
 mapMonitorV2::usage="mapMonitorV2[func_,skls_List,bc_List,dropfrac_]\n A second version of MapIndexed that outputs a progress 
@@ -136,6 +139,8 @@ mapMonitorV3::usage="mapMonitorV3[ssc_List,binimgs_List,endptsimg_List,junctptsi
 mapModFuncV2 and monitors its progress.";
 formatDat1::usage="formatDat1[data_,mainlables_,sublables_,subgrouplen_]\n formats the width data to use in 
 statistical tables and box-whisker charts.";
+formatDat1V2::usage="formatDat1V2[data_,mainlables_,sublables_]\n formats the width data to use in 
+statistical tables and box-whisker charts.";
 outlierFrac::usage="outlierFrac[data_]\n Calculates the fraction of outlier width points.";
 statsTable::usage="statsTable[data_Association]\n outputs various statistical values of the data";
 statsTablesJoined::usage="statsTablesJoined[data_Association]\n Flatten version of statsTable";
@@ -143,6 +148,8 @@ formatDat2::usage="formatDat2[dat1_,dat2_]\n Formats the data to use in statsTab
 statsTableV2::usage="statsTableV2[data_Association,grouplengths_]\n This table gathers and presents the statitical data based on 
 assign groups";
 printStats::usage="printStats[data_,type_,groupnames_,sigdigit_]\n prints the statistics table depending on type selected.";
+jpTable::usage="jpTable[grpnam_,fnoriginal_,numofjunctpts_,filtjps_,sscdata_,sscref_,joingroups_]\n prints the junction point and
+skeleton count table depending on type selected.";
 
 
 
@@ -200,9 +207,9 @@ dimFunc[data_]:=Map[If[Head[#]===Image,ImageDimensions[#],Dimensions[#]]&,data,{
 trimmingFunc[images_List, dims_List] := 
 	If[Length[dims] === Length[images],
     MapThread[ImageTrim[#1, #2]&, {images, dims}],
-   {"Lists of unequal length. The lenth of images is " <> ToString[Length[images]] <> 
-    " and the length of dimensions is " <> ToString[Length[dims]] <> ". Edit the 
-	list of dimensions so that both list are of equal length."}
+   {"Lists of unequal length. The number of images is " <> ToString[Length[images]] <> 
+    " and the number of parameter table rows is " <> ToString[Length[dims]] <> ". Edit the 
+	number of parameter table rows so that both list are of equal length."}
 	]
 
 
@@ -212,36 +219,49 @@ trimmingFunc[images_List, dims_List] :=
 
 
 (* ::Code::Initialization::Bold:: *)
-pixCountFunc[data_List,number_List]/;(Length[number]===2):=Block[{fp,sp,fpm,spm},
+pixCountFunc[data_List,number_]/;(Length[number]===2):=Block[{fp,sp,fpm,spm},
 fp=Select[data,#[[5]]===number[[1]]&][[1,4]];
 sp=Select[data,#[[5]]===number[[2]]&][[1,4]];
 {fpm,spm}=Sort[{fp,sp},#1[[2,1]]<#2[[2,1]]&];
 spm[[2,1]]-fpm[[1,1]]
 ]
 
-pixCountFunc[data_List,number_List]/;(Length[number]===1||Length[number]===0):=Block[{fp},
+pixCountFunc[data_List,number_]/;(Length[number]===1):=Block[{fp},
 fp=Select[data,#[[5]]===number[[1]]&][[1,4]];
 fp[[2,1]]-fp[[1,1]]
+]
+
+pixCountFunc[data_List,number_]/;(Length[number]===0):=Block[{fp},
+fp=Select[data,#[[5]]===number&][[1,4]];
+fp[[2,1]]-fp[[1,1]]
+]
+
+(*I tried using this automatic interpreter but it frequently fails.*)
+magnitudeInterpret[img_]:=Module[{txtread,magnitude,unit},
+txtread=TextRecognize[img];
+magnitude=ToExpression@First[StringCases[txtread,NumberString]];
+unit=StringJoin@@StringCases[txtread,LetterCharacter];
+Quantity[magnitude,unit]
 ]
 
 
 
 (* ::Subsection::Closed:: *)
-(*Display functions 1*)
+(*Table display*)
 
 
 (* ::Code::Initialization::Bold:: *)
 tableDisplay1[filenames_List] := TableForm[Insert[Map[{FileNameTake[#,
    -1]}&, filenames], Length[filenames], {1, 2}], TableHeadings -> {None,
-   {"File names", "File count"}}, TableAlignments -> Center]
+   {"File names", "File count"}}, TableAlignments -> Left]
 
 tableDisplay2[data_List] := TableForm[data, TableHeadings -> {Range[Length[data]], {
-  "File names", "Pixel size"}}, TableAlignments -> Center]
+  "File names", "Pixel size", "Units"}}, TableAlignments -> Left]
 
 tableDisplay3[filenames_, data_List] := TableForm[Thread[{FileBaseName
    /@ filenames, Map[If[Length[#]>0, Keys @ Last[#], 0]&, data]}], TableHeadings ->
    {None, {"File names", "Number of junction points"}}, TableAlignments ->
-   Left]
+   Center]
    
 tableDisplay4[filenames_, jp_List, jpref_, ssrefdata_List, ssorigdata_List] :=  TableForm[
 Thread[{FileBaseName /@ filenames, Map[If[Length[#]>0, Keys @ Last[#], 0]&, jp],Length/@jpref, Length/@ssorigdata,
@@ -262,16 +282,9 @@ imgDisplay1[image_List, size_, ar_] := If[Head[image[[1]]] === Image,
 
 
 (* ::Code::Initialization::Bold:: *)
-(*Deprecated. This function does not work as intended.*)
-formatForExp[data_List, filenames_List] := Block[{n, paddata, moddat},
-   n = Max @ Map[Length, data]; 
-   paddata = Map[PadRight[#, n]&, data];
-   moddat = Prepend[Transpose[paddata], filenames]; 
-   moddat /. {0 -> Nothing}]
-
 (*Use this function for formatting data to export into excel. You can use ctrl + shift + down arrow
  in excel to select all populated cells in a column. Once the data is exported use the first row of index
-  positions to sort the columns in the way the order they appear in FACT. For this first select all the 
+  positions to sort the columns in the way they are ordered in FACT. For this, first select all the 
   data then go to Sort & Filter, then click options and select sort left to right then in Sort by select 
   Row 1 and in order choose smallest to larges, then click Ok.*)
 expToExcel[data_List, filenames_List] := Module[{ moddat,moddatindx,datsort,paddata},
@@ -294,54 +307,129 @@ expMult[dir_String, name_List, ext_String, data_List] := Block[{},
 	ResetDirectory[];
 	]
 	
-exportAll[datapath_,fnoriginal_,datafn_,kernsize_,mincount_,minelongation_,dropfrac_,
-anglethreshold_,ssmincount_,widthdata_,widthmeandat_,refwidthdata_,refwidthmeandat_,expformat_]:=Module[{},
-
+exportAll[datapath_,fnoriginal_,datafn_,widthdata_,widthmeandat_,refwidthdata_,refwidthmeandat_,expformat_]:=Module[{},
 Which[
 expformat==="xlsx"||expformat==="XLSX",
-
 (*Exporting all skeleton width data as xlsx file.*)
-exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_"<>ToString[kernsize]<>"kS"<>
-"_"<>ToString[mincount]<>"mC"<>"_"<>ToString[minelongation]<>"mE"<>"_allSklWidth."<>
+exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_allSklWidth."<>
 ToString[expformat],expToExcel[widthdata,FileBaseName/@fnoriginal]];
-(*Exporting all skeleton width data as xlsx file.*)
-exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_"<>ToString[kernsize]<>"kS"<>
-"_"<>ToString[mincount]<>"mC"<>"_"<>ToString[minelongation]<>"mE"<>"_meanAllSklWidth."<>
+(*Exporting all skeleton width mean data as xlsx file.*)
+exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_meanAllSklWidth."<>
 ToString[expformat],expToExcel[widthmeandat,FileBaseName/@fnoriginal]];
 (*Exporting refined skeleton width data as xlsx file.*)
-exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_"<>ToString[kernsize]<>"kS"<>
-"_"<>ToString[mincount]<>"mC"<>"_"<>ToString[minelongation]<>"mE"<>"_"<>ToString[dropfrac]<>"df_"<>
-ToString[anglethreshold]<>"deg"<>"_"<>ToString[ssmincount]<>"smC"<>"_refinedSklWidth."<>
+exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_refinedSklWidth."<>
 ToString[expformat],expToExcel[refwidthdata,FileBaseName/@fnoriginal]];
 (*Exporting mean refined skeleton width data as xlsx file.*)
-exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_"<>ToString[kernsize]<>"kS"<>
-"_"<>ToString[mincount]<>"mC"<>"_"<>ToString[minelongation]<>"mE"<>"_"<>ToString[dropfrac]<>"df_"<>
-ToString[anglethreshold]<>"deg"<>"_"<>ToString[ssmincount]<>"smC"<>"_meanRefinedSklWidth."<>
+exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_meanRefinedSklWidth."<>
 ToString[expformat],expToExcel[refwidthmeandat,FileBaseName/@fnoriginal]],
-
 expformat!="xlsx"||expformat!="XLSX",
-
-(*Exporting all skeleton width data as xlsx file.*)
-exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_"<>ToString[kernsize]<>"kS"<>
-"_"<>ToString[mincount]<>"mC"<>"_"<>ToString[minelongation]<>"mE"<>"_allSklWidth."<>
+(*Exporting all skeleton width data as mx file.*)
+exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_allSklWidth."<>
 ToString[expformat],widthdata];
-(*Exporting all skeleton width data as xlsx file.*)
-exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_"<>ToString[kernsize]<>"kS"<>
-"_"<>ToString[mincount]<>"mC"<>"_"<>ToString[minelongation]<>"mE"<>"_meanAllSklWidth."<>
+(*Exporting all skeleton width mean data mx file.*)
+exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_meanAllSklWidth."<>
 ToString[expformat],widthmeandat];
-(*Exporting refined skeleton width data as xlsx file.*)
-exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_"<>ToString[kernsize]<>"kS"<>
-"_"<>ToString[mincount]<>"mC"<>"_"<>ToString[minelongation]<>"mE"<>"_"<>ToString[dropfrac]<>"df_"<>
-ToString[anglethreshold]<>"deg"<>"_"<>ToString[ssmincount]<>"smC"<>"_refinedSklWidth."<>
+(*Exporting refined skeleton width data as mx file.*)
+exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_refinedSklWidth."<>
 ToString[expformat],refwidthdata];
-(*Exporting mean refined skeleton width data as xlsx file.*)
-exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_"<>ToString[kernsize]<>"kS"<>
-"_"<>ToString[mincount]<>"mC"<>"_"<>ToString[minelongation]<>"mE"<>"_"<>ToString[dropfrac]<>"df_"<>
-ToString[anglethreshold]<>"deg"<>"_"<>ToString[ssmincount]<>"smC"<>"_meanRefinedSklWidth."<>
+(*Exporting mean refined skeleton width data as mx file.*)
+exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_meanRefinedSklWidth."<>
 ToString[expformat],refwidthmeandat]
 ]
 ]
+
+exportPT[datapath_,datafn_,ptdisplay_,expformat_]:=
+exportFunc[First@FileNames["Statistical results",datapath,2],datafn<>"_Metadata"<>
+ToString[expformat],ptdisplay]
   
+
+
+(* ::Section::Closed:: *)
+(*Parameter table*)
+
+
+(* ::Subsection::Closed:: *)
+(*Table auto fill*)
+
+
+(* ::Code::Initialization::Bold:: *)
+checkF[input_,newinput_,i_]/;(Depth[input]===2||Depth[input]===3):=If[
+Head[input[[i]]]===Symbol,
+newinput[[i-1]],
+input[[i]]
+]
+
+checkF[input_,newinput_,i_]/;(Depth[input]===4):=If[
+Head[input[[i,1]]]===Symbol,
+newinput[[i-1]],
+input[[i]]
+]
+
+autoFill[input_List]:=Module[{newinput,i,entry},
+newinput=Table[0,{Length[input]}];
+For[i=1,i<=Length[input],i++,
+entry=checkF[input,newinput,i];
+newinput[[i]]=entry
+];
+newinput
+]
+
+(*Condensed version of extrFunc. This version is easier to edit but less informative*)
+extrFuncV2[paramtab_List]:=Module[{input,inputmod},
+(*Selecting only the values*)
+input=Transpose[paramtab[[4;;All]]];
+(*Modifying the ROI table entries and joining all inputs*)
+inputmod=Join[{input[[1]],Thread[{input[[2]],input[[3]]}],Thread[{input[[4]],input[[5]]}],Thread[{input[[6]],input[[7]]}]},input[[8;;All]]];
+autoFill/@inputmod
+]
+
+extrFuncDisplay[paramtab_List]:=Module[{input,table},
+(*Selecting only the values*)
+input=Transpose[paramtab[[4;;All]]];
+table=autoFill/@input;
+Join[paramtab[[1;;3,All]],Transpose[table]]
+]
+
+extrFunc[paramtab_List]:=Module[{input,index,imgtrimROI,scalebarROI,
+sbmagROI,smv,smu,sbthresh,sbminlen,sbcolneg,sbhl,gausskern,compmincount,compminelong,sst,ssf,
+trimtype,orientcorr,ssmincnt,joinjpdist,xfrac,yfrac,lenfrac,color,
+magshift,fontsize,grpnam,histbin,xrang,yrang},
+input=Transpose[paramtab[[4;;All]]];(*Selecting only the values*)
+index=input[[1]];(*position index*)
+imgtrimROI=Thread[{input[[2]],input[[3]]}] ;(*Region of interest for image triming*)
+scalebarROI=Thread[{input[[4]],input[[5]]}]; (*Region of interest for scalebar display*)
+sbmagROI=Thread[{input[[6]],input[[7]]}];(*Region of interest for scalebar magnitude display*)
+smv=input[[8]];(*Scale magnitude value*)
+smu=input[[9]];(*Scale magnitude unit*)
+sbthresh=input[[10]];(*Scale bar gray value threshold*)
+sbminlen=input[[11]];(*Scale bar minimum length*)
+sbcolneg=input[[12]]; (*Scale bar color negate*)
+sbhl=input[[13]];(*Scale bar highlight lable*)
+gausskern=input[[14]];(*Kernel size for gaussian filter*)
+compmincount=input[[15]];(*Binary component minimum count*)
+compminelong=input[[16]];(*Binary component minimum eleongation*)
+sst=input[[17]];(*skeleton segment trimming percentage*)
+ssf=input[[18]];(*skeleton segment filtering: max distance transform angle*)
+trimtype=input[[19]];(*Whether to trim from skl end*)
+orientcorr=input[[20]];(*Resampling skeleton based on orientation*)
+ssmincnt=input[[21]];(*skeleton segment minimum count*)
+joinjpdist=input[[22]];(*pixel radius for concatenating junction points*)
+xfrac=input[[23]];(*Overlay scale bar centroid x fraction position*)
+yfrac=input[[24]];(*Overlay scale bar centroid y fraction position*)
+lenfrac=input[[25]];(*Overlay scale bar length fraction*)
+color=input[[26]];(*scale bar color*)
+magshift=input[[27]];(*scale bar magnitude shift from line*)
+fontsize=input[[28]];(*scale bar magnitude font size*)
+grpnam=input[[29]];(*Group names*)
+histbin=input[[30]];(*Histogram bin size*)
+xrang=input[[31]];(*Histogram x range*)
+yrang=input[[32]];(*Histogram y range*)
+autoFill/@{index,imgtrimROI,scalebarROI,
+sbmagROI,smv,smu,sbthresh,sbminlen,sbcolneg,sbhl,gausskern,compmincount,compminelong,sst,ssf,
+trimtype,orientcorr,ssmincnt,joinjpdist,xfrac,yfrac,lenfrac,color,
+magshift,fontsize,grpnam,histbin,xrang,yrang}
+]
+
 
 
 (* ::Section::Closed:: *)
@@ -745,7 +833,8 @@ Show[ImageAdjust@partimgs[[part]],Graphics[{Red,PointSize[Small],Point[pixpos[[p
 ]
 
 histoDisplay[data_,fn_,size_,binsize_]:=
-Histogram[data[[All,3]],{binsize},"Probability",AxesLabel->{"Angle (deg)","Probability"},PlotRange->{{0,55},All},PlotLabel->FileBaseName[fn],ImageSize->size]
+Histogram[data[[All,3]],{binsize},"Probability",AxesLabel->{"Angle (deg)","Probability"},
+PlotRange->{{0,55},All},PlotLabel->Style[FileBaseName[fn],Black,14],AxesStyle->Directive[Black, 14],ImageSize->size]
 
 pltRangeV2[data_]:=Block[{xmin,xmax,ymin,ymax,zmin,zmax,delta},
 {xmin,xmax}=MinMax@data[[All,1]];
@@ -842,23 +931,9 @@ Blue,PointSize[locptsize],
 Point/@pos,
 If[circle==="yes",Thread[Circle[pos,rad]]],Red,Line/@nc},ImageSize->500]
 ]
-
-scaleBarV1[img_,xfrac_,yfrac_,len_,imgdim_List,pixsize_,color_,ynumpos_,fontsize_Integer,linethick_,unit_String]:=Show[img,Graphics[{color,Thickness[linethick],Line[{{xfrac*imgdim[[1]]-(len/pixsize)/2,yfrac*imgdim[[2]]},{xfrac*imgdim[[1]],yfrac*imgdim[[2]]},{xfrac*imgdim[[1]]+(len/pixsize)/2,yfrac*imgdim[[2]]}}],Style[Text[StringJoin[ToString[len],unit],{xfrac*imgdim[[1]],yfrac*imgdim[[2]]-ynumpos}],fontsize,Bold]}]]
-
 (*Deprecated*)
-scaleBarV2[img_,xfrac_,yfrac_,lenfrac_,imgdim_List,pixsize_,color_,ynumpos_,fontsize_Integer,linethick_,unit_String]:=Block[{newlen,xmin,xmax,ypos,bkgoffset,graphic},
-newlen=IntegerPart[lenfrac*imgdim[[1]]*pixsize];
-{xmin,xmax}={xfrac*imgdim[[1]]-(newlen/pixsize)/2,xfrac*imgdim[[1]]+(newlen/pixsize)/2};
-ypos=yfrac*imgdim[[2]];
-bkgoffset=IntegerPart[lenfrac*imgdim[[1]]*0.02];
-(*Not sure why these offsets are necessary. Here I am computing the offset as a fraction of the image column size. Here we first plot a white background for the scalebar, then the scalebar, then the size text.*)
-graphic=Graphics[{White,Thickness[linethick+0.01],
-Line[{{xmin-bkgoffset+0.003*imgdim[[1]],ypos},{xmax+bkgoffset-0.01*imgdim[[1]],ypos}}],color,Thickness[linethick],Line[{{xmin+0.003*imgdim[[1]],ypos},{xmax-0.01*imgdim[[1]],ypos}}],
-Style[Text[StringJoin[ToString[NumberForm[newlen,{6,2}]],unit],{xfrac*imgdim[[1]],ypos-ynumpos}],fontsize,Bold,Background->White]},ImageSize->imgdim];ImageResize[HighlightImage[img,graphic],imgdim]
-]
-
-scaleBarV3[img_,xfrac_,yfrac_,lenfrac_,imgdim_List,pixsize_,color_,ynumpos_,fontsize_Integer,linethick_,unit_String]:=Module[{len,xmin,xmax,ypos,bkgoffset,graphic1,newimg,newxmin,newxmax,newlen,printlength,graphic2},
-len=Round[lenfrac*imgdim[[1]]*pixsize,.1];
+(*scaleBar[img_,xfrac_,yfrac_,lenfrac_,imgdim_List,pixsize_,color_,ynumpos_,fontsize_Integer,linethick_,unit_String,printunit_String]:=Module[{len,xmin,xmax,ypos,bkgoffset,graphic1,newimg,newxmin,newxmax,newlen,ratio,quant,printquant,printlength,graphic2},
+len=lenfrac*imgdim[[1]]*pixsize;
 {xmin,xmax}={xfrac*imgdim[[1]]-(len/pixsize)/2,xfrac*imgdim[[1]]+(len/pixsize)/2};
 ypos=yfrac*imgdim[[2]];
 bkgoffset=IntegerPart[lenfrac*imgdim[[1]]*0.02];
@@ -866,13 +941,38 @@ graphic1=Graphics[{White,Thickness[linethick],Line[{{xmin,ypos},{xmax,ypos}}]}];
 newimg=Binarize@ImageResize[HighlightImage[ConstantImage[0,imgdim],graphic1],imgdim];
 {newxmin,newxmax}=First[Values[ComponentMeasurements[newimg,"BoundingBox"]]][[All,1]];
 newlen=(newxmax-newxmin)*pixsize;
-printlength=If[newlen<1,Round[newlen,0.01],Round[newlen,1]];
+quant=Quantity[newlen,unit];
+printquant=UnitConvert[quant,printunit];
+printlength=If[newlen<1,Round[printquant,0.01],Round[printquant,1]];
 graphic2=Graphics[{White,Thickness[linethick+0.01],
 Line[{{xmin-bkgoffset,ypos},{xmax+bkgoffset,ypos}}],color,Thickness[linethick],
 Line[{{xmin,ypos},{xmax,ypos}}],
-Style[Text[StringJoin[ToString[printlength],unit],{xmin+(xmax-xmin)/2,ypos-ynumpos}],fontsize,Bold,Background->White]}];
+Style[Text[StringJoin[ToString[Information[printlength,"Magnitude"]]," ",printunit],{xmin+(xmax-xmin)/2,ypos-ynumpos}],fontsize,Bold,Background->White]}];
 ImageResize[HighlightImage[img,graphic2],imgdim]
-(*{len,newlen,len/newlen//N}*)
+]*)
+(*This version of the scalebar overlay function fixes the rasterizing scaling problem. Now when the scale bar length perfectly corresponds to the scale bar magnitude. Thus scalebarManitude/ScalebarLength = pixel size*)
+scaleBar[img_,xfrac_,yfrac_,len_,imgdim_List,pixsize_,color_,ynumpos_,fontsize_Integer,linethick_,unit_String,printunit_String]:=Module[{centx,xmin,xmax,ypos,graphic1,newimg,newxmin,newxmax,newlen,ratio,newxmin1,newxmax1,quant,
+printquant,centxwant,centxis,xcorrect,newxmin2,newxmax2,printlength,graphic2},
+{xmin,xmax}={0.5*imgdim[[1]]-(len/pixsize)/2,0.5*imgdim[[1]]+(len/pixsize)/2};
+ypos=yfrac*imgdim[[2]];
+graphic1=Graphics[{White,Thickness[linethick],Line[{{xmin,ypos},{xmax,ypos}}]}];
+newimg=Binarize@ImageResize[HighlightImage[ConstantImage[0,imgdim],graphic1],imgdim];
+{newxmin,newxmax}=First[Values[ComponentMeasurements[newimg,"BoundingBox"]]][[All,1]];
+newlen=(newxmax-newxmin)*pixsize;
+ratio=len/newlen;
+{newxmin1,newxmax1}={xmin,xmax}*ratio;
+quant=Quantity[len,unit];
+printquant=N@UnitConvert[quant,printunit];
+centxwant=xfrac*imgdim[[1]];
+centxis=(newxmin1+newxmax1)/2;
+xcorrect=centxwant-centxis;
+{newxmin2,newxmax2}={newxmin1,newxmax1}+xcorrect;
+graphic2=Graphics[{White,Thickness[linethick+0.01],
+Line[{{newxmin2,ypos},{newxmax2,ypos}}],color,Thickness[linethick],
+Line[{{newxmin2,ypos},{newxmax2,ypos}}],
+Style[Text[StringJoin[ToString[Information[printquant,"Magnitude"]]," ",printunit],
+{newxmin2+(newxmax2-newxmin2)/2,ypos-ynumpos}],fontsize,Bold,Background->White]}];
+ImageResize[HighlightImage[img,graphic2],imgdim]
 ]
 
 resampleFunc[dat_List,max_Integer]:=Module[{part},
@@ -889,18 +989,31 @@ Rasterize[
 Legended[
 HighlightImage[img,{PointSize[ptsize],MapThread[{#1,#2}&,{ColorData[{colscheme,range}]/@valsscaled,Point/@pixpos}]},ImageSize->Full],
 BarLegend[{colscheme,range},LegendLabel->"Width ("<>units<>")",
-LegendMarkerSize->(*Last[ImageDimensions[img]]**)legendscale,LabelStyle->Directive[Black,FontSize->Round[(*Last[ImageDimensions[img]]**)lengendnumscale]]]
+LegendMarkerSize->legendscale,LabelStyle->Directive[Black,FontSize->Round[lengendnumscale]]]
 ],RasterSize->1500]
 ]
 
 juncPtGraphic[binimg_Image,junctionpts_List,modbcfilt_,maxrad_,brnchptssize_,junctptsize_,imgsize_,sklcolor_,JPcolor_]:=
-HighlightImage[binimg,{PointSize[brnchptssize],sklcolor,modbcfilt[[All,2]],JPcolor,PointSize[junctptsize],Point[junctionpts]},ImageSize->imgsize]
+ImageResize[HighlightImage[binimg,{PointSize[brnchptssize],sklcolor,modbcfilt[[All,2]],JPcolor,PointSize[junctptsize],Point[junctionpts]},ImageSize->imgsize],ImageDimensions[binimg]]
 
 downSamp[data_,partlen_]:=Module[{f,l,moddat,partdat},
 {f,l}={First[#],Last[#]}&@data;
 moddat=If[Length[data]>2,Take[data,{2,-2}],data];
 partdat=First/@Partition[moddat,partlen];
 Union@Join[{f},partdat,{l}]
+]
+
+meanDTcolMap[img_,skldat_,dtangle_,scale_,multby2_,colscheme_,multfactor_,colmaprange_,ptsize_,legendscale_,lengendnumscale_]:=Module[{pixpos,vals,valsscaled,range},
+pixpos=skldat[[All,2]];
+vals=dtangle;
+valsscaled=multfactor*vals;
+range=If[Length[colmaprange]>0,colmaprange,{#1,#2}&@@MinMax[valsscaled]];
+Rasterize[
+Legended[
+HighlightImage[img,{PointSize[ptsize],MapThread[{#1,#2}&,{ColorData[{colscheme,range}]/@valsscaled,Point/@pixpos}]},ImageSize->Full],
+BarLegend[{colscheme,range},LegendLabel->"DT Angle \[Degree]",
+LegendMarkerSize->legendscale,LabelStyle->Directive[Black,FontSize->Round[lengendnumscale]]]
+],RasterSize->1500]
 ]
 
 
@@ -944,6 +1057,12 @@ formatDat1[data_,mainlables_,sublables_,subgrouplen_]:=Association[
 Thread[{mainlables,TakeList[MapThread[ToString[#2]->#1&,{data,sublables}],subgrouplen]}]
 ]
 
+formatDat1V2[data_,mainlables_,sublables_]:=Module[{form1,merge},
+form1=MapThread[ToString[#2]->#1&,{data,sublables}];
+merge=Merge[#1->#2&@@@Thread[{mainlables,form1}],Identity];
+Association/@merge
+]
+
 outlierFrac[data_]:=Block[{len1,quart,inbetweendata,len2},
 len1=Length/@data;
 quart=Quartiles/@data;
@@ -973,8 +1092,22 @@ modlist1=MapThread[formatDat2[#1,#2]&,{list1,outfrac},1];
 ]
 
 printStats[data_,type_,groupnames_,sigdigit_]:=If[type==="no",
-TableForm[Map[NumberForm[#,{4,sigdigit}]&,Transpose/@data[[2]],{3}],TableDirections->Column,TableAlignments->{Center,Center},TableHeadings->{data[[1]],{"Name","Mean","Skewness","1st Quartile","Median","3rd Quartile","StdDev","Count","Outliers(%)"}}],TableForm[Map[NumberForm[#,{3,2}]&,data,{2}],
-TableAlignments->Center,TableHeadings->{groupnames,{"Mean","Skewness","1st Quartile","Median","3rd Quartile","StdDev","Count","Outliers(%)"}}]
+TableForm[Map[NumberForm[#,{4,sigdigit}]&,Transpose/@data[[2]],{3}],TableDirections->Column,TableAlignments->{Center,Center},TableHeadings->{data[[1]],{"Name","Mean","Skewness","Q1","Median","Q3","StdDev","Count","Outliers(%)"}}],TableForm[Map[NumberForm[#,{4,sigdigit}]&,data,{2}],
+TableAlignments->Center,TableHeadings->{groupnames,{"Mean","Skewness","Q1","Median","Q3","StdDev","Count","Outliers(%)"}}]
+]
+
+jpTable[grpnam_,fnoriginal_,numofjunctpts_,filtjps_,sscdata_,sscref_,joingroups_]:=Module[{alldat,format,key,format2,format3},
+alldat=Transpose@Join[Map[Length,{numofjunctpts,filtjps,sscdata,sscref},{2}],{Map[Total[#[[All,1]]]&,sscdata]},{Map[Total[#[[All,1]]]&,sscref]}];
+format=Normal@formatDat1V2[alldat,grpnam,fnoriginal];
+key=Keys@format;
+format2=Map[Flatten,MapThread[{#1,#2}&,{Keys@Values[format],Values@Values[format]},2],{2}];
+Which[
+joingroups==="no",
+TableForm[Transpose/@format2,TableAlignments->Center,TableHeadings->{key,{"Name","#JP orig","#JP ref","#Skl orig","#Skl ref","#Skl pix orig","#Skl pix ref"}}],
+joingroups==="yes",
+format3=Map[Total,Map[Rest[Transpose[#]]&,format2],{2}];
+TableForm[Transpose/@format3,TableAlignments->Center,TableHeadings->{key,{"#JP orig","#JP ref","#Skl orig","#Skl ref","#Skl pix orig","#Skl pix ref"}}]
+]
 ]
 
 
