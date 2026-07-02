@@ -179,7 +179,7 @@ Monitor[MapIndexed[(x=First[#2];func[#1])&,args],
 
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Image viewing functions*)
 
 
@@ -314,7 +314,7 @@ Prepend[Append[Map[Flatten,Thread[{samplepos,samplename,data,meansampleiou}]],me
 
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*Result export*)
 
 
