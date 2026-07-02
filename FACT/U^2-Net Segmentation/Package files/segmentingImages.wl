@@ -74,7 +74,7 @@ TableForm[{len,tot},TableHeadings->{{"file lengths","total"},None},TableSpacing-
 ]
 
 imgImportFunc[directory_String,mode_String,num_Integer,lst_List]/;(Length@FileNames[All,directory]>0):=Module[{fn,filenames,images},
-fn=FileNames[All,directory];
+fn=FileNames[{__~~".tiff",__~~".tif",__~~".jpeg",__~~".png",__~~".bmp",__~~".mx"},directory];
 filenames=Which[
 mode=="random",
 RandomSample[Flatten@Sort[GatherBy[fn,StringLength[#]&],StringLength[First@#1]<StringLength[First@#2]&],num],
@@ -100,7 +100,7 @@ mode=="all"||mode=="random"||mode=="ordered",
 
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Segmentation functions*)
 
 
@@ -314,7 +314,7 @@ Prepend[Append[Map[Flatten,Thread[{samplepos,samplename,data,meansampleiou}]],me
 
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Result export*)
 
 

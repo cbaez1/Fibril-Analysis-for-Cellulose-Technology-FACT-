@@ -51,7 +51,7 @@ Begin["`Private`"];
 (* ::Code::Initialization::Bold:: *)
 importDataset[dataset_]:=Module[{fn1,fn2,import},
 fn1=Reverse/@Map[FileNames[All,#,1]&,Normal@dataset,{1}];
-fn2=Map[FileNames[All,#,1]&,fn1,{2}];
+fn2=Map[FileNames[{__~~".tiff",__~~".tif",__~~".jpeg",__~~".png",__~~".bmp",__~~".mx"},#,1]&,fn1,{2}];
 import=Map[Import,fn2,{3}];
 {Map[Transpose,Values[import]],Map[FileBaseName,Map[First[#]&,fn2],{2}]}
 ]
